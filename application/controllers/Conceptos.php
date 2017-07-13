@@ -70,14 +70,14 @@ class Conceptos extends CI_Controller {
 		if ($this->session->userdata('login')) {
 
 			if ($_POST) {
-				$log = $this->input->post();
-				$log['ID']=  $this->uri->segment(3);
-				$this->Log->update($log);
+				$concepto = $this->input->post();
+				$concepto['ID_CONCEPTO']=  $this->uri->segment(3);
+				$this->Concepto->update($concepto);
 				header("Location:" . base_url(). "conceptos");
 			} else {
 				#Vista
 				$id = $this->uri->segment(3);
-				$data['log'] = $this->Log->get_log($id);
+				$data['concepto'] = $this->Concepto->ver($id);
 				$this->load->helper('form');
 				$this->load->view('conceptos/editar', $data);
 
@@ -94,7 +94,7 @@ class Conceptos extends CI_Controller {
 			$id = $this->uri->segment(3);
 
 			if ($id!='') {
-				$this->Log->delete($id);
+				$this->Concepto->delete($id);
 				header("Location:" . base_url(). "conceptos");
 
 			} else {

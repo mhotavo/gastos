@@ -2,17 +2,17 @@
 <body>
 	<?php $this->load->view('overall/nav'); ?>
 	<div class="container">
-		<h4 align="center"> Nuevo concepto </h4>
+		<h4 align="center"> <?php echo $concepto[0]->CONCEPTO;  ?> </h4>
 		<br>
 		<div class="">
 			<div class="col-md-2"></div>
 			<div class="col-md-8">
-				<?=  form_open_multipart('logs/agregar/', 'class="form-horizontal"');  ?>
+				<?=  form_open_multipart('conceptos/editar/'.$concepto[0]->ID_CONCEPTO.' ', 'class="form-horizontal"');  ?>
 				<fieldset>
 					<div class="form-group">
 						<label for="" class="col-md-3 control-label">Nombre</label>
 						<div class="col-md-9">
-							<input type="text" class="form-control" name="NOMBRE" id="NOMBRE" value="">
+							<input type="text" class="form-control" name="NOMBRE" id="NOMBRE" value="<?php echo $concepto[0]->CONCEPTO;  ?>">
 						</div>
 					</div>    
 					<div class="form-group">
@@ -38,7 +38,7 @@
 	<?php $this->load->view('overall/footer'); ?>
 
 	<script>
-		$("#tipo").val("<?php echo $log[0]->TIPO; ?>");
+		$("#TIPO").val("<?php echo $concepto[0]->TIPO;  ?>");
 	</script>
 
 

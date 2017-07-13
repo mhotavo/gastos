@@ -9,9 +9,9 @@ class Concepto extends CI_Model
 
 	public function ver($id='')
 	{
-		$this->ID=$id;
-		$this->db->where('ID', $this->ID);
-		$query = $this->db->get('logs');
+		$this->ID_CONCEPTO=$id;
+		$this->db->where('ID_CONCEPTO', $this->ID_CONCEPTO);
+		$query = $this->db->get('conceptos');
 		return $query->result();
 	}
 
@@ -23,24 +23,23 @@ class Concepto extends CI_Model
 
 
 
-	public function add($log=null)
+	public function add($concepto=null)
 	{
-		if ($log!=null) {
-			$this->CONCEPTO      = $log['NOMBRE'];
-			$this->TIPO      = $log['TIPO'];
+		if ($concepto!=null) {
+			$this->CONCEPTO      = $concepto['NOMBRE'];
+			$this->TIPO      = $concepto['TIPO'];
 			$this->db->insert('conceptos', $this);
 		}
 	}
 
-	public function update($log=null)
+	public function update($concepto=null)
 	{
 
+		if ($concepto!=null) {
 
-		if ($log!=null) {
-
-			$this->ID_CONCEPTO = $log['ID_CONCEPTO'];
-			$this->CONCEPTO    = $log['NOMBRE'];
-			$this->TIPO        = $log['TIPO'];
+			$this->ID_CONCEPTO = $concepto['ID_CONCEPTO'];
+			$this->CONCEPTO    = $concepto['NOMBRE'];
+			$this->TIPO        = $concepto['TIPO'];
 			$this->db->where('ID_CONCEPTO', $this->ID_CONCEPTO); 
 			$this->db->update('conceptos', $this);
 		}
