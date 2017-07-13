@@ -7,7 +7,7 @@
     <div class="">
       <div class="col-md-2"></div>
       <div class="col-md-8">
-        <?=  form_open_multipart('logs/agregar/', 'class="form-horizontal"');  ?>
+        <?=  form_open_multipart('conceptos/agregar/', 'class="form-horizontal"');  ?>
         <fieldset>
           <div class="form-group">
             <label for="" class="col-md-3 control-label">Nombre</label>

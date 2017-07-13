@@ -7,8 +7,10 @@ class Conceptos extends CI_Controller {
 	public function index()
 	{
 		if ($this->session->userdata('login')) {
-			$data['conceptos']  = $this->Log->get_ok();
+
+			$data['conceptos']  = $this->Concepto->index();
 			$this->load->view('conceptos/index', $data);
+
 		} else {
 			header("Location:" . base_url());
 		}
@@ -47,10 +49,9 @@ class Conceptos extends CI_Controller {
 	public function agregar()
 	{
 		if ($this->session->userdata('login')) {
-
 			if ($_POST) {
-				$log = $this->input->post();
-				$this->Log->add($log);
+				$Concepto = $this->input->post();
+				$this->Concepto->add($Concepto);
 				header("Location:" . base_url(). "conceptos");
 			} else {
 				#Vista
