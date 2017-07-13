@@ -1,14 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Eventos extends CI_Controller {
+class Transacciones extends CI_Controller {
 
 
 	public function index()
 	{
 		if ($this->session->userdata('login')) {
-			$data['eventos']  =$this->evento->get_all();
-			$this->load->view('eventos/index', $data);
+			$data['transacciones']  =$this->Transaccion->index();
+			$this->load->view('transacciones/index', $data);
 		} else {
 			header("Location:" . base_url());
 		}
@@ -19,13 +19,14 @@ class Eventos extends CI_Controller {
 		if ($this->session->userdata('login')) {
 
 			if ($_POST) {
-				$evento = $this->input->post();
-				$this->evento->add($evento);
-				header("Location:" . base_url(). "eventos");
+				$transaccion = $this->input->post();
+				$this->Transaccion->add($transaccion);
+				header("Location:" . base_url(). "transacciones");
 			} else {
 				#Vista
 				$this->load->helper('form');
-				$this->load->view('eventos/agregar');
+				$data['concepto'] = $this->Concepto->index();
+				$this->load->view('transacciones/agregar', $data);
 			}
 
 		} else {

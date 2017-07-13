@@ -1,14 +1,14 @@
 <?php 
 
-class Evento extends CI_Model
+class Transaccion extends CI_Model
 {
 	
-	public $ID_EVENTO;
-	public $LUGAR;
-	public $TIPO;
-	public $DESCRIPCION;
+	public $ID_TRANSACCION;
+	public $ID_CONCEPTO;
+	public $VALOR;
 	public $FECHA;
-	public $USUARIOLOG;
+	public $ID_USUARIO;
+
 
 	public function get_evento($id='')
 	{
@@ -18,11 +18,11 @@ class Evento extends CI_Model
 		return $query->result();
 	}
 
-	public function get_all()
+	public function index()
 	{
-		$query = $this->db->query('SELECT * FROM evento ORDER BY FECHA ASC');
+		$query = $this->db->get('transaccion'); 
 		return $query->result();
-	}
+	} 
 
 	public function add($evento=null)
 	{

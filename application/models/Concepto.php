@@ -17,7 +17,7 @@ class Concepto extends CI_Model
 
 	public function index()
 	{
-		$query = $this->db->get('conceptos'); 
+		$query = $this->db->query('SELECT * FROM conceptos ORDER BY CONCEPTO ASC'); 
 		return $query->result();
 	} 
 

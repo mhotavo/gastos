@@ -24,7 +24,7 @@
             $ant='';
             $next='';
             $dias='';
-            foreach ($eventos as $key => $row) 
+            foreach ($transacciones as $key => $row) 
             {
 
               ?>
