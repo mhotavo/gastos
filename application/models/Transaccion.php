@@ -21,7 +21,7 @@ class Transaccion extends CI_Model
 
 	public function index()
 	{
-		$query = $this->db->get('transaccion'); 
+		$query = $this->db->query('SELECT * FROM transaccion t LEFT JOIN conceptos c ON (t.ID_CONCEPTO=c.ID_CONCEPTO) ORDER BY FECHA DESC'); 
 		return $query->result();
 	} 
 

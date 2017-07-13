@@ -7,8 +7,8 @@
   <div id="container">
     <h2 align="center"></h2>
     <div class="">
-      <div class="col-md-2"></div>
-      <div class="col-md-8">
+      <div class="col-md-3"></div>
+      <div class="col-md-7">
 
         <table class="table table-striped table-hover dataTable" id="">
           <thead>
