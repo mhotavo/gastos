@@ -25,10 +25,10 @@
             {  
               switch ($row->TIPO) {
                 case 'G':
-                $row->TIPO='GASTO <i class="fa fa-money" aria-hidden="true"></i>';
+                $row->TIPO='<span class="text-danger bold">GASTO <i class="fa fa-money" aria-hidden="true"></i></span>';
                 break;
                 case 'I':
-                $row->TIPO='INGRESO <i class="fa fa-money" aria-hidden="true"></i>';
+                $row->TIPO='<span class="text-success bold">INGRESO <i class="fa fa-money" aria-hidden="true"></i></span>';
                 break;
               }
               echo '<tr>';
@@ -63,8 +63,7 @@
         "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
         "autoWidth": true,           
         "sPaginationType": "full_numbers",
-        //"order": [[ 2, 'desc' ]]
-        "order": false
+        "order": [[ 1, 'desc' ], [ 0, 'asc' ]]
       });
     } );
   </script>

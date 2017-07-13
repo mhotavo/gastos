@@ -60,8 +60,10 @@ class Transaccion extends CI_Model
 		}
 	}
 
-	public function UltimaVez(){
-		$result = $this->db->query("SELECT FECHA FROM transaccion WHERE TIPO='Sex' ORDER BY FECHA DESC LIMIT 1");
+
+
+	public function sumaGastos(){
+		$result = $this->db->query("SELECT SUM(t.VALOR) AS TOTAL FROM transaccion t LEFT JOIN conceptos c ON (t.ID_CONCEPTO=c.ID_CONCEPTO) WHERE c.TIPO='G'  AND FECHA BETWEEN '2017-06-15' AND '2017-07-15'");
 		if ($result->num_rows() > 0) {
 			return $result->row();
 		} else {
@@ -69,71 +71,8 @@ class Transaccion extends CI_Model
 		} 
 	}
 
-	public function PrimeraVez(){
-		$result = $this->db->query("SELECT FECHA FROM transaccion  WHERE TIPO='Sex' ORDER BY FECHA ASC LIMIT 1");
-		if ($result->num_rows() > 0) {
-			return $result->row();
-		} else {
-			return null;
-		} 
-	}
-
-	public function TotalSex(){
-		$result = $this->db->query("SELECT count(*) AS TOTAL FROM transaccion WHERE TIPO='Sex'");
-		if ($result->num_rows() > 0) {
-			return $result->row();
-		} else {
-			return null;
-		} 
-	}
-
-	public function Total69(){
-		$result = $this->db->query("SELECT count(*) AS TOTAL FROM transaccion WHERE TIPO='69' ");
-		if ($result->num_rows() > 0) {
-			return $result->row();
-		} else {
-			return null;
-		} 
-	}
-
-	public function TotalOralEl(){
-		$result = $this->db->query("SELECT count(*) AS TOTAL FROM transaccion WHERE TIPO='El'");
-		if ($result->num_rows() > 0) {
-			return $result->row();
-		} else {
-			return null;
-		} 
-	}
-
-	public function TotalOralElla(){
-		$result = $this->db->query("SELECT count(*) AS TOTAL FROM transaccion WHERE TIPO='Ella'");
-		if ($result->num_rows() > 0) {
-			return $result->row();
-		} else {
-			return null;
-		} 
-	}
-
-	public function UltimoAndres(){
-		$result = $this->db->query("SELECT FECHA FROM transaccion  WHERE TIPO='Andres' ORDER BY FECHA DESC LIMIT 1");
-		if ($result->num_rows() > 0) {
-			return $result->row();
-		} else {
-			return null;
-		} 
-	}
-
-	public function ProximoAndres(){
-		$result = $this->db->query("SELECT   DATE_ADD(FECHA, INTERVAL 28 DAY) AS NEXT FROM transaccion  WHERE TIPO='Andres' ORDER BY FECHA DESC LIMIT 1");
-		if ($result->num_rows() > 0) {
-			return $result->row();
-		} else {
-			return null;
-		} 
-	}
-
-	public function ProximaInyeccion(){
-		$result = $this->db->query("SELECT   DATE_ADD(FECHA, INTERVAL 30 DAY) AS NEXT FROM transaccion  WHERE TIPO='Inyeccion' ORDER BY FECHA DESC LIMIT 1");
+	public function sumaIngresos(){
+		$result = $this->db->query("SELECT SUM(t.VALOR) AS TOTAL  FROM transaccion t LEFT JOIN conceptos c ON (t.ID_CONCEPTO=c.ID_CONCEPTO) WHERE c.TIPO='I'  AND FECHA BETWEEN '2017-06-15' AND '2017-07-15'");
 		if ($result->num_rows() > 0) {
 			return $result->row();
 		} else {

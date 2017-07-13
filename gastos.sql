@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-07-2017 a las 22:03:15
+-- Tiempo de generación: 13-07-2017 a las 22:45:54
 -- Versión del servidor: 5.7.14
 -- Versión de PHP: 5.6.25
 
@@ -44,7 +44,8 @@ INSERT INTO `conceptos` (`ID_CONCEPTO`, `CONCEPTO`, `TIPO`) VALUES
 (7, 'Comida', 'G'),
 (8, 'Sueldo', 'I'),
 (9, 'PREMIO APUESTA', 'I'),
-(10, 'ARREGLO PC/CEL', 'I');
+(10, 'ARREGLO PC/CEL', 'I'),
+(11, 'Icetex', 'G');
 
 -- --------------------------------------------------------
 
@@ -79,7 +80,9 @@ CREATE TABLE `transaccion` (
 --
 
 INSERT INTO `transaccion` (`ID_TRANSACCION`, `ID_CONCEPTO`, `DESCRIPCION`, `VALOR`, `FECHA`, `ID_USUARIO`) VALUES
-(1, 3, 'prueb', 3000, '2017-07-13', 1);
+(1, 3, 'prueb', 3000, '2017-07-13', 1),
+(2, 8, 'Sueldo Julio', 1283000, '2017-07-13', 1),
+(3, 11, 'Pago de Julio', 180000, '2017-07-13', 1);
 
 -- --------------------------------------------------------
 
@@ -143,7 +146,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `conceptos`
 --
 ALTER TABLE `conceptos`
-  MODIFY `ID_CONCEPTO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `ID_CONCEPTO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT de la tabla `creditos`
 --
@@ -153,7 +156,7 @@ ALTER TABLE `creditos`
 -- AUTO_INCREMENT de la tabla `transaccion`
 --
 ALTER TABLE `transaccion`
-  MODIFY `ID_TRANSACCION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID_TRANSACCION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --

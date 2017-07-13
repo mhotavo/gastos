@@ -33,10 +33,10 @@
       </li>
     </ul>
     <ul class="nav navbar-nav">
-     <li><a href="<?= base_url(); ?>conceptos/inactivos"> Inactivos <i class="fa fa-list" aria-hidden="true"></i></i></a></li> 
+    <li><a href="<?= base_url(); ?>home"> Informe <i class="fa fa-line-chart" aria-hidden="true"></i></i></a></li> 
    </ul>
    <ul class="nav navbar-nav">
-     <li><a href="<?= base_url(); ?>conceptos/backup"> Backup <i class="fa fa-pc" aria-hidden="true"></i></i></a></li> 
+     <li><a href="<?= base_url(); ?>home/backup"> Backup <i class="fa fa-database" aria-hidden="true"></i></i></a></li> 
    </ul>
    <ul class="nav navbar-nav navbar-right">
      <li>

@@ -26,26 +26,6 @@ class Conceptos extends CI_Controller {
 		}
 	}
 
-	public function backup()
-	{
-		if ($this->session->userdata('login')) {
-			// Load the DB utility class
-			$this->load->dbutil();
-			// Backup your entire database and assign it to a variable
-			$backup = $this->dbutil->backup();
-			// Load the file helper and write the file to your server
-			$this->load->helper('file');
-			write_file('/path/to/backup-bd-'.date('Y-m-d').'.gz', $backup);
-			// Load the download helper and send the file to your desktop
-			$this->load->helper('download');
-			force_download('backup-bd-'.date('Y-m-d').'.gz', $backup);
-			header("Location:" . base_url(). "conceptos");
-		} else {
-			header("Location:" . base_url());
-		}
-	}
-
-
 	public function agregar()
 	{
 		if ($this->session->userdata('login')) {

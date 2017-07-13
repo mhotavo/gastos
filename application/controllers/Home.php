@@ -8,9 +8,9 @@ class Home extends CI_Controller {
 	{
 		if ($this->session->userdata('login')) {
 
-			$UltimaVez=$this->evento->UltimaVez();
-			$TotalSex=$this->evento->TotalSex();
-			$Total69=$this->evento->Total69();
+			$totalGastos=$this->Transaccion->sumaGastos();
+			$totalIngresos=$this->Transaccion->sumaIngresos();
+			/*$Total69=$this->evento->Total69();
 			$TotalOralEl=$this->evento->TotalOralEl();
 			$TotalOralElla=$this->evento->TotalOralElla();
 			$UltimoAndres=$this->evento->UltimoAndres();
@@ -34,33 +34,42 @@ class Home extends CI_Controller {
 			$proxInyec = new DateTime($ProximaInyeccion->NEXT);
 			$interval = $hoy->diff($proxInyec);
 			$diasProxInyec=$interval->format('En %a día(s)');
-
+*/
 			$data['datos'] = array(
-				"UltimaVez" => $UltimaVez->FECHA,
-				#"PrimeraVez" => $PrimeraVez,
-				"TotalSex" => $TotalSex->TOTAL,
-				"Total69" => $Total69->TOTAL,
-				"TotalOralEl" => $TotalOralEl->TOTAL,
-				"TotalOralElla" => $TotalOralElla->TOTAL,
-				"UltimoAndres" => $UltimoAndres->FECHA,
-				"ProximoAndres" => $ProximoAndres->NEXT,
-				"ProximaInyeccion" => $ProximaInyeccion->NEXT,
-				"diasUltimaVez" => $dias,
-				"diasRegla" => $diasRegla,
-				"diasProximaRegla" => $diasProximaRegla,
-				"diasProxInyec" => $diasProxInyec,
-				);
+				"totalGastos" => $totalGastos->TOTAL,
+				"totalIngresos" => $totalIngresos->TOTAL,
+				"saldo" => ($totalIngresos->TOTAL-$totalGastos->TOTAL),
+				); 
 
-			$this->load->view('home/index', $data);
+				$this->load->view('home/index', $data);
 
-		} else {
-			header("Location:" . base_url());
+			} else {
+				header("Location:" . base_url());
+			}
+
 		}
-		
+
+
+		public function backup()
+		{
+			if ($this->session->userdata('login')) {
+			// Load the DB utility class
+				$this->load->dbutil();
+			// Backup your entire database and assign it to a variable
+				$backup = $this->dbutil->backup();
+			// Load the file helper and write the file to your server
+				$this->load->helper('file');
+				write_file('/path/to/gastos-bd-'.date('Y-m-d').'.gz', $backup);
+			// Load the download helper and send the file to your desktop
+				$this->load->helper('download');
+				force_download('gastos-bd-'.date('Y-m-d').'.gz', $backup);
+				header("Location:" . base_url(). "home");
+			} else {
+				header("Location:" . base_url());
+			}
+		}
+
 	}
-
-
-}
 
 
 
