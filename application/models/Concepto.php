@@ -21,6 +21,17 @@ class Concepto extends CI_Model
 		return $query->result();
 	} 
 
+	public function ingresos()
+	{
+		$query = $this->db->query('SELECT * FROM conceptos WHERE TIPO="I" ORDER BY CONCEPTO ASC'); 
+		return $query->result();
+	} 
+
+	public function gastos()
+	{
+		$query = $this->db->query('SELECT * FROM conceptos WHERE TIPO="G" ORDER BY CONCEPTO ASC'); 
+		return $query->result();
+	} 
 
 
 	public function add($concepto=null)

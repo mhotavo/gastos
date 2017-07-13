@@ -24,13 +24,15 @@
       <li class="dropdown ">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true"> Transacciónes <span class="caret"></span></a>
         <ul class="dropdown-menu" role="menu">
-          <li><a href="<?= base_url(); ?>transacciones">Listar</a></li>
+          <li><a href="<?= base_url(); ?>transacciones">Todas</a></li>
           <li class="divider"></li>
-          <li><a href="<?= base_url(); ?>transacciones/agregar">Agregar</a></li>
+          <li><a href="<?= base_url(); ?>transacciones/ingresos">Ingresos</a></li>
+          <li class="divider"></li>
+          <li><a href="<?= base_url(); ?>transacciones/gastos">Gastos</a></li>
         </ul>
       </li>
     </ul>
-   <ul class="nav navbar-nav">
+    <ul class="nav navbar-nav">
      <li><a href="<?= base_url(); ?>conceptos/inactivos"> Inactivos <i class="fa fa-list" aria-hidden="true"></i></i></a></li> 
    </ul>
    <ul class="nav navbar-nav">

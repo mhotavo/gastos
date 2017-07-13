@@ -2,7 +2,7 @@
 <body>
   <?php $this->load->view('overall/nav'); ?>
   <div class="container">
-    <h4 align="center">Nueva Transacción <i class="fa fa-money" aria-hidden="true"></i></h4> 
+    <h2 align="center"><?= $titulo; ?> <i class="fa fa-money" aria-hidden="true"></i></h2> 
     <br>
     <div class="row">
      <div class="col-md-2"></div>
@@ -13,7 +13,6 @@
          <label for="" class="col-lg-2 control-label">Concepto:</label>
          <div class="col-lg-10">
            <select name="ID_CONCEPTO" id="ID_CONCEPTO" class="form-control">
-
              <?php 
              foreach ($concepto as $key => $row) 
              { 
@@ -27,6 +26,12 @@
        <label for="" class="col-lg-2 control-label">Valor: </label>
        <div class="col-lg-10">
          <input type="number" class="form-control" name="VALOR"  id="VALOR">
+       </div>
+     </div> 
+     <div class="form-group">
+       <label for="" class="col-lg-2 control-label">Descripción: </label>
+       <div class="col-lg-10">
+         <textarea  type="text" class="form-control" name="DESCRIPCION" id="DESCRIPCION"  rows="5" required></textarea>
        </div>
      </div> 
      <div class="form-group">

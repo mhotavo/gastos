@@ -17,18 +17,39 @@ class Transacciones extends CI_Controller {
 	public function agregar()
 	{
 		if ($this->session->userdata('login')) {
-
 			if ($_POST) {
 				$transaccion = $this->input->post();
 				$this->Transaccion->add($transaccion);
 				header("Location:" . base_url(). "transacciones");
-			} else {
-				#Vista
-				$this->load->helper('form');
-				$data['concepto'] = $this->Concepto->index();
-				$this->load->view('transacciones/agregar', $data);
 			}
+		} else {
+			header("Location:" . base_url());
+		}		
+		
+	}
 
+	public function ingresos()
+	{
+		if ($this->session->userdata('login')) {
+			#Vista
+			$this->load->helper('form');
+			$data['concepto'] = $this->Concepto->ingresos();
+			$data['titulo'] = "Ingresos";
+			$this->load->view('transacciones/agregar', $data);
+		} else {
+			header("Location:" . base_url());
+		}		
+		
+	}
+
+	public function gastos()
+	{
+		if ($this->session->userdata('login')) {
+			#Vista
+			$this->load->helper('form');
+			$data['concepto'] = $this->Concepto->gastos();
+			$data['titulo'] = "Gastos";
+			$this->load->view('transacciones/agregar', $data);
 		} else {
 			header("Location:" . base_url());
 		}		
