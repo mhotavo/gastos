@@ -79,8 +79,15 @@ class Transacciones extends CI_Controller {
 	{
 		$id = $this->uri->segment(3);
 		if ($id!='') {
+			$idCredito=  $this->Transaccion->ver($id)[0]->ID_CREDITO; 
+			if ($idCredito!=null) {
+				$abono['ID_CREDITO']=$idCredito;
+				$abono['SALDO_ANTERIOR']= $this->Transaccion->ver($id)[0]->VALOR;
+				$this->Credito->updateSaldo($abono,"update"); 
+			}
 			$this->Transaccion->delete($id);
 			header("Location:" . base_url(). "transacciones");
+
 		} else {
 			header("Location:" . base_url());
 		}
