@@ -2,21 +2,22 @@
 <body>
   <?php $this->load->view('overall/nav'); ?>
   <div class="container">
-    <h2 align="center"><?= $titulo; ?> <i class="fa fa-money" aria-hidden="true"></i></h2> 
+    <h2 align="center">Registrar Pago <i class="fa fa-money" aria-hidden="true"></i></h2> 
     <br>
     <div class="row">
      <div class="col-md-2"></div>
      <div class="col-md-8">
-       <?=  form_open_multipart('transacciones/agregar', 'class="form-horizontal"');  ?>
+       <?=  form_open_multipart('creditos/agregarAbono', 'class="form-horizontal"');  ?>
        <fieldset>
         <div class="form-group">
-         <label for="" class="col-lg-2 control-label">Concepto:</label>
-         <div class="col-lg-10">
-           <select name="ID_CONCEPTO" id="ID_CONCEPTO" class="form-control">
+          <label for="" class="col-lg-2 control-label">Crédito:</label>
+          <div class="col-lg-10">
+           <select name="ID_CREDITO" id="ID_CREDITO" class="form-control">
+             <option value="">[...]</option>
              <?php 
-             foreach ($concepto as $key => $row) 
+             foreach ($creditos as $key => $row) 
              { 
-              echo ' <option value="'. $row->ID_CONCEPTO.'">'. strtoupper($row->CONCEPTO).'</option>';
+              echo ' <option value="'. $row->ID.'">'. strtoupper($row->CREDITO).'</option>';
             }
             ?>
           </select>
@@ -56,5 +57,14 @@
 </div>  
 </div>
 <?php $this->load->view('overall/footer'); ?>
+
+<script>
+  $('#ID_CREDITO').change(function(){
+   var name=$("#ID_CREDITO option[value='"+$(this).val()+"']").text();
+   $("textarea#DESCRIPCION").val(name);
+ });
+</script>
+
+
 </body>
 </html>   

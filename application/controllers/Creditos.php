@@ -69,14 +69,13 @@ class Creditos extends CI_Controller {
 	public function agregarAbono()
 	{
 		if ($_POST) {
-			$abono       = $this->input->post();
-			$abono['id'] = $this->uri->segment(3);
-			$this->abono->update($abono);
-			header("Location:" . base_url(). "eventos");
+			$abono                = $this->input->post();
+			$abono['ID_CONCEPTO'] = "12";
+			$this->Transaccion->add($abono);
+			header("Location:" . base_url(). "transacciones");
 		} else {
-				#Vista
-			$id             = $this->uri->segment(3);
-			$data['abono'] = $this->Transaccion->get_evento($id);
+			#Vista
+			$data['creditos'] = $this->Credito->index();
 			$this->load->helper('form');
 			$this->load->view('abonos/agregar', $data);
 		}

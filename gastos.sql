@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-07-2017 a las 22:45:54
+-- Tiempo de generación: 14-07-2017 a las 15:21:22
 -- Versión del servidor: 5.7.14
 -- Versión de PHP: 5.6.25
 
@@ -38,14 +38,13 @@ CREATE TABLE `conceptos` (
 
 INSERT INTO `conceptos` (`ID_CONCEPTO`, `CONCEPTO`, `TIPO`) VALUES
 (3, 'Apuesta', 'G'),
-(4, 'Tarjeta Bancolombia', 'G'),
 (5, 'Etb', 'G'),
-(6, 'Tarjeta Exito', 'G'),
 (7, 'Comida', 'G'),
 (8, 'Sueldo', 'I'),
 (9, 'PREMIO APUESTA', 'I'),
 (10, 'ARREGLO PC/CEL', 'I'),
-(11, 'Icetex', 'G');
+(11, 'Icetex', 'G'),
+(12, 'PAGO CREDITOS', 'G');
 
 -- --------------------------------------------------------
 
@@ -56,9 +55,19 @@ INSERT INTO `conceptos` (`ID_CONCEPTO`, `CONCEPTO`, `TIPO`) VALUES
 CREATE TABLE `creditos` (
   `ID` int(11) NOT NULL,
   `CREDITO` text,
-  `SALDO` int(11) DEFAULT NULL,
-  `FECHA_VEN` date DEFAULT NULL
+  `SALDO` double DEFAULT NULL,
+  `FECHA_VEN` date DEFAULT NULL,
+  `TOTAL_CUOTAS` int(3) DEFAULT NULL,
+  `CUOTAS_PAGAS` int(3) DEFAULT NULL,
+  `INTERES` double DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `creditos`
+--
+
+INSERT INTO `creditos` (`ID`, `CREDITO`, `SALDO`, `FECHA_VEN`, `TOTAL_CUOTAS`, `CUOTAS_PAGAS`, `INTERES`) VALUES
+(2, 'Tarjeta Joven Bancolombia', 1000002, '2017-12-31', 1, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -69,6 +78,7 @@ CREATE TABLE `creditos` (
 CREATE TABLE `transaccion` (
   `ID_TRANSACCION` int(11) NOT NULL,
   `ID_CONCEPTO` int(11) NOT NULL,
+  `ID_CREDITO` int(11) DEFAULT NULL,
   `DESCRIPCION` text,
   `VALOR` int(11) DEFAULT NULL,
   `FECHA` date DEFAULT NULL,
@@ -79,10 +89,12 @@ CREATE TABLE `transaccion` (
 -- Volcado de datos para la tabla `transaccion`
 --
 
-INSERT INTO `transaccion` (`ID_TRANSACCION`, `ID_CONCEPTO`, `DESCRIPCION`, `VALOR`, `FECHA`, `ID_USUARIO`) VALUES
-(1, 3, 'prueb', 3000, '2017-07-13', 1),
-(2, 8, 'Sueldo Julio', 1283000, '2017-07-13', 1),
-(3, 11, 'Pago de Julio', 180000, '2017-07-13', 1);
+INSERT INTO `transaccion` (`ID_TRANSACCION`, `ID_CONCEPTO`, `ID_CREDITO`, `DESCRIPCION`, `VALOR`, `FECHA`, `ID_USUARIO`) VALUES
+(1, 3, NULL, 'prueb', 3000, '2017-07-13', 1),
+(2, 8, NULL, 'Sueldo Julio', 1283000, '2017-07-13', 1),
+(3, 11, NULL, 'Pago de Julio', 180000, '2017-07-13', 1),
+(4, 7, NULL, 'Perro caliente al lado de la iglesia', 5000, '2017-07-13', 1),
+(5, 12, NULL, '.', 1, '2017-07-14', 1);
 
 -- --------------------------------------------------------
 
@@ -130,7 +142,8 @@ ALTER TABLE `transaccion`
   ADD PRIMARY KEY (`ID_TRANSACCION`),
   ADD KEY `ID_CONCEPTO` (`ID_CONCEPTO`),
   ADD KEY `ID_USUARIO` (`ID_USUARIO`),
-  ADD KEY `ID_USUARIO_2` (`ID_USUARIO`);
+  ADD KEY `ID_USUARIO_2` (`ID_USUARIO`),
+  ADD KEY `ID_CREDITO` (`ID_CREDITO`);
 
 --
 -- Indices de la tabla `usuarios`
@@ -146,17 +159,17 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `conceptos`
 --
 ALTER TABLE `conceptos`
-  MODIFY `ID_CONCEPTO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `ID_CONCEPTO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT de la tabla `creditos`
 --
 ALTER TABLE `creditos`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `transaccion`
 --
 ALTER TABLE `transaccion`
-  MODIFY `ID_TRANSACCION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID_TRANSACCION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
