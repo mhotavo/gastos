@@ -13,10 +13,10 @@
         <table class="table table-striped table-hover dataTable" id="">
           <thead>
             <tr>
-              <th width="%">Crédito</th>
-              <th width="%">Saldo</i></th>
-              <th width="%">Fecha Ven.</i></th>
-              <th width="%" class="hidden-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></th>
+              <th width="">Crédito</th>
+              <th width="">Saldo</i></th>
+              <th width="">Día Ven.</i></th>
+              <th width="" class="hidden-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></th>
             </tr>
           </thead>
           <tbody> 
@@ -25,8 +25,8 @@
             foreach ($creditos as $key => $row) 
             {  
               echo '<tr>';
-              echo '<td>'. mb_strtoupper($row->CREDITO).'</td>';
-              echo '<td>'. mb_strtoupper($row->SALDO).'</td>';
+              echo '<td class="bold">'. mb_strtoupper($row->CREDITO).'</td>';
+              echo '<td>$ '. number_format($row->SALDO, 0, '.', '.').'</td>';
               echo '<td>'. mb_strtoupper($row->FECHA_VEN).'</td>';
               ?>
               <td class="hidden-xs">

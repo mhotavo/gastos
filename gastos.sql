@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-07-2017 a las 17:12:46
+-- Tiempo de generación: 14-07-2017 a las 17:21:31
 -- Versión del servidor: 5.7.14
 -- Versión de PHP: 5.6.25
 
@@ -42,7 +42,7 @@ INSERT INTO `conceptos` (`ID_CONCEPTO`, `CONCEPTO`, `TIPO`) VALUES
 (7, 'Comida', 'G'),
 (8, 'Sueldo', 'I'),
 (9, 'PREMIO APUESTA', 'I'),
-(10, 'ARREGLO PC/CEL', 'I'),
+(10, 'FORMATEO', 'I'),
 (11, 'Icetex', 'G'),
 (12, 'PAGO CREDITOS', 'G');
 
@@ -56,7 +56,7 @@ CREATE TABLE `creditos` (
   `ID` int(11) NOT NULL,
   `CREDITO` text,
   `SALDO` double DEFAULT NULL,
-  `FECHA_VEN` date DEFAULT NULL,
+  `FECHA_VEN` int(2) DEFAULT NULL,
   `TOTAL_CUOTAS` int(3) DEFAULT NULL,
   `CUOTAS_PAGAS` int(3) DEFAULT NULL,
   `INTERES` double DEFAULT NULL
@@ -67,7 +67,7 @@ CREATE TABLE `creditos` (
 --
 
 INSERT INTO `creditos` (`ID`, `CREDITO`, `SALDO`, `FECHA_VEN`, `TOTAL_CUOTAS`, `CUOTAS_PAGAS`, `INTERES`) VALUES
-(2, 'Tarjeta Joven Bancolombia', 1000002, '2017-12-31', 1, NULL, 1);
+(3, 'ICETEX', 8164630, 10, 56, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -154,7 +154,7 @@ ALTER TABLE `conceptos`
 -- AUTO_INCREMENT de la tabla `creditos`
 --
 ALTER TABLE `creditos`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `transaccion`
 --

@@ -22,9 +22,9 @@
             </div>
           </div>    
           <div class="form-group">
-            <label for="" class="col-md-3 control-label">Fecha de vencimiento</label>
+            <label for="" class="col-md-3 control-label">Día Vencimiento</label>
             <div class="col-md-9">
-              <input type="date" class="form-control" name="FECHA_VEN" id="FECHA_VEN" value="">
+              <input type="number" maxlength="2" class="form-control" name="FECHA_VEN" id="FECHA_VEN" value="">
             </div>
           </div>   
           <div class="form-group">
