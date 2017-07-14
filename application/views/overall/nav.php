@@ -22,6 +22,18 @@
     </ul>
     <ul class="nav navbar-nav">
       <li class="dropdown ">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true"> Créditos <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="<?= base_url(); ?>creditos">Listar</a></li>
+          <li class="divider"></li>
+          <li><a href="<?= base_url(); ?>creditos/agregar">Agregar</a></li>
+          <li class="divider"></li>
+          <li><a href="<?= base_url(); ?>creditos/agregarAbono">Pago</a></li>
+        </ul>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav">
+      <li class="dropdown ">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true"> Transacciónes <span class="caret"></span></a>
         <ul class="dropdown-menu" role="menu">
           <li><a href="<?= base_url(); ?>transacciones">Todas</a></li>
@@ -33,9 +45,9 @@
       </li>
     </ul>
     <ul class="nav navbar-nav">
-    <li><a href="<?= base_url(); ?>home"> Informe <i class="fa fa-line-chart" aria-hidden="true"></i></i></a></li> 
-   </ul>
-   <ul class="nav navbar-nav">
+      <li><a href="<?= base_url(); ?>home"> Informe <i class="fa fa-line-chart" aria-hidden="true"></i></i></a></li> 
+    </ul>
+    <ul class="nav navbar-nav">
      <li><a href="<?= base_url(); ?>home/backup"> Backup <i class="fa fa-database" aria-hidden="true"></i></i></a></li> 
    </ul>
    <ul class="nav navbar-nav navbar-right">

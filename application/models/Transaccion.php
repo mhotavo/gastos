@@ -5,6 +5,7 @@ class Transaccion extends CI_Model
 	
 	public $ID_TRANSACCION;
 	public $ID_CONCEPTO;
+	public $ID_CREDITO;
 	public $VALOR;
 	public $FECHA;
 	public $DESCRIPCION;

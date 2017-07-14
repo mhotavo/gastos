@@ -15,6 +15,14 @@ class User extends CI_Model
 		} 
 
 	}
+	public function check()
+	{
+		if (!$this->session->userdata('login')) {
+			header("Location:" . base_url());
+		}
+	}
+
+
 
 
 }
