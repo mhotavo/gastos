@@ -15,19 +15,28 @@
           </tr>
         </thead>
         <tbody>
-          <?php foreach ($creditos as $key => $row) {
+          <?php 
+          $totalCredito=0;
+          foreach ($creditos as $key => $row) {
            echo'<tr>';
-           echo'<td>'.$row->CREDITO.'</td>';
+           echo'<td>'.mb_strtoupper($row->CREDITO).'</td>';
            echo'<td>'.$row->FECHA_VEN.date("-m-Y").'</td>';
            echo'<td>'.$row->CUOTAS_PAGAS.' de '.$row->TOTAL_CUOTAS. '</td>';
            echo'<td> $ '.number_format($row->SALDO, 0, '.', '.').'</td>';
            echo'</tr>';
+           $totalCredito=$totalCredito+$row->SALDO;
          } ?>
 
        </tbody>
-     </table> 
-   </div>
- </div>
+       <thead>
+        <tr>
+          <th  colspan="3" ">TOTAL</th>
+          <th><?= number_format($totalCredito, 0, '.', '.') ?></th>
+        </tr>
+      </thead>
+    </table> 
+  </div>
+</div>
 </div>
 
 <?php $this->load->view('overall/footer'); ?> 
