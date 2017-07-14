@@ -27,7 +27,7 @@
             {  
               if ($row->TIPO=='G') {
                 echo '<tr class="danger">';
-             } else {
+              } else {
                echo '<tr class="success">';
              }
              
@@ -37,8 +37,8 @@
              echo '<td>'. mb_strtoupper($row->FECHA).'</td>';
              ?>
              <td class="hidden-xs">
-              <a  class="btn btn-warning" href="<?php echo base_url(); ?>conceptos/editar/<?php echo $row->ID_CONCEPTO; ?>"><i class="fa fa-cog" aria-hidden="true"></i></a> 
-              <a  class="btn btn-danger" onclick="DeleteItem('¿Está seguro de eliminar este concepto?', '<?php echo base_url(); ?>conceptos/eliminar/<?php echo $row->ID_CONCEPTO ?>')" >
+              <a  class="btn btn-warning" href="<?php echo base_url(); ?>transacciones/editar/<?php echo $row->ID_TRANSACCION; ?>"><i class="fa fa-cog" aria-hidden="true"></i></a> 
+              <a  class="btn btn-danger" onclick="DeleteItem('¿Está seguro de eliminar esta transaccion?', '<?php echo base_url(); ?>transacciones/eliminar/<?php echo $row->ID_TRANSACCION ?>')" >
                 <i class="fa fa-trash" aria-hidden="true"></i>
               </a> 
             </td>
@@ -65,7 +65,6 @@
       "autoWidth": true,           
       "sPaginationType": "full_numbers",
         //"order": [[ 2, 'desc' ]]
-        "order": false
       });
   } );
 </script>

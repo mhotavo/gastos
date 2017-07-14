@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-07-2017 a las 15:21:22
+-- Tiempo de generación: 14-07-2017 a las 17:12:46
 -- Versión del servidor: 5.7.14
 -- Versión de PHP: 5.6.25
 
@@ -82,19 +82,9 @@ CREATE TABLE `transaccion` (
   `DESCRIPCION` text,
   `VALOR` int(11) DEFAULT NULL,
   `FECHA` date DEFAULT NULL,
-  `ID_USUARIO` int(11) NOT NULL
+  `ID_USUARIO` int(11) NOT NULL,
+  `FECHALOG` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `transaccion`
---
-
-INSERT INTO `transaccion` (`ID_TRANSACCION`, `ID_CONCEPTO`, `ID_CREDITO`, `DESCRIPCION`, `VALOR`, `FECHA`, `ID_USUARIO`) VALUES
-(1, 3, NULL, 'prueb', 3000, '2017-07-13', 1),
-(2, 8, NULL, 'Sueldo Julio', 1283000, '2017-07-13', 1),
-(3, 11, NULL, 'Pago de Julio', 180000, '2017-07-13', 1),
-(4, 7, NULL, 'Perro caliente al lado de la iglesia', 5000, '2017-07-13', 1),
-(5, 12, NULL, '.', 1, '2017-07-14', 1);
 
 -- --------------------------------------------------------
 
@@ -169,7 +159,7 @@ ALTER TABLE `creditos`
 -- AUTO_INCREMENT de la tabla `transaccion`
 --
 ALTER TABLE `transaccion`
-  MODIFY `ID_TRANSACCION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID_TRANSACCION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --

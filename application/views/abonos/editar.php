@@ -2,43 +2,43 @@
 <body>
 	<?php $this->load->view('overall/nav'); ?>
 	<div class="container">
-		<h3 align="center"> <?php echo $evento[0]->LUGAR;  ?></h3>
+		<h2 align="center"> <?=  $transaccion[0]->CONCEPTO ?></h2> 
 		<br>
-		<div class="">
+		<div class="row">
 			<div class="col-md-2"></div>
 			<div class="col-md-8">
-				<?=  form_open_multipart('eventos/editar/'.$evento[0]->ID_EVENTO.'', 'class="form-horizontal"');  ?>
+				<?=  form_open_multipart('transacciones/editar/'.$transaccion[0]->ID_TRANSACCION.' ', 'class="form-horizontal"');  ?>
 				<fieldset>
 					<div class="form-group">
-						<label for="" class="col-lg-2 control-label">Lugar</label>
+						<label for="" class="col-lg-2 control-label">Crédito:</label>
 						<div class="col-lg-10">
-							<input type="text" class="form-control" name="lugar" id="lugar" value="<?php echo $evento[0]->LUGAR;  ?>">
-						</div>
-					</div>		 
-					<div class="form-group">
-						<label for="" class="col-lg-2 control-label">Tipo</label>
-						<div class="col-lg-10">
-							<select name="tipo" id="tipo" class="form-control">
+							<select name="ID_CREDITO" id="ID_CREDITO" class="form-control">
 								<option value="">[...]</option>
-								<option value="Andres">Regla</option>
-								<option value="Sex">Sex</option>
-								<option value="69">69</option>
-								<option value="El">Oral a Él</option>
-								<option value="Ella">Oral a Ella</option>
-								<option value="Inyeccion">Inyección</option>
+								<?php 
+								foreach ($creditos as $key => $row) 
+								{ 
+									echo ' <option value="'. $row->ID.'">'. strtoupper($row->CREDITO).'</option>';
+								}
+								?>
 							</select>
 						</div>
 					</div>		
 					<div class="form-group">
-						<label for="" class="col-lg-2 control-label">Descripcion</label>
+						<label for="" class="col-lg-2 control-label">Valor: </label>
 						<div class="col-lg-10">
-						<textarea  type="text" class="form-control" name="descripcion" id="descripcion"  rows="5" required><?php echo $evento[0]->DESCRIPCION;?></textarea>
+							<input type="number" class="form-control" name="VALOR"  id="VALOR" value="<?=  $transaccion[0]->VALOR ?>">
+						</div>
+					</div> 
+					<div class="form-group">
+						<label for="" class="col-lg-2 control-label">Descripción: </label>
+						<div class="col-lg-10">
+							<textarea  type="text" class="form-control" name="DESCRIPCION" id="DESCRIPCION"  rows="5" required><?=  $transaccion[0]->DESCRIPCION ?></textarea>
 						</div>
 					</div> 
 					<div class="form-group">
 						<label for="" class="col-lg-2 control-label">Fecha</label>
 						<div class="col-lg-10">
-							<input type="date" class="form-control" name="fecha"  id="fecha" value="<?php echo $evento[0]->FECHA; ?>">
+							<input type="date" class="form-control" name="FECHA"  id="FECHA" value="<?=  $transaccion[0]->FECHA ?>">
 						</div>
 					</div>			    	        
 
@@ -57,8 +57,13 @@
 		</div>  
 	</div>
 	<?php $this->load->view('overall/footer'); ?>
+
 	<script>
-		$("#tipo").val("<?php echo $evento[0]->TIPO; ?>");
+		$('#ID_CREDITO').change(function(){
+			var name=$("#ID_CREDITO option[value='"+$(this).val()+"']").text();
+			$("textarea#DESCRIPCION").val(name);
+		});
+		$("#ID_CREDITO").val("<?php echo $transaccion[0]->ID_CREDITO;  ?>");
 	</script>
 
 

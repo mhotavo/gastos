@@ -19,14 +19,49 @@ class Transacciones extends CI_Controller {
 	{
 		if ($_POST) {
 			$transaccion = $this->input->post();
+			$transaccion['ID_CREDITO']=  NULL;
 			$this->Transaccion->add($transaccion);
 			header("Location:" . base_url(). "transacciones");
 		}
 	}
 
+	public function editar()
+	{
+		if ($_POST) {
+			$transaccion                   = $this->input->post();
+			$transaccion['ID_TRANSACCION'] = $this->uri->segment(3);
+			#Creamos ID del credio o concepto
+			if (isset($transaccion['ID_CONCEPTO'])) {
+				$transaccion['ID_CREDITO']=NULL;
+			} else {
+				$transaccion['ID_CONCEPTO']='12';
+			}
+			$this->Transaccion->update($transaccion);
+			header("Location:" . base_url(). "transacciones");
+		}  else {
+			# Vista
+			$this->load->helper('form');
+			$id                  = $this->uri->segment(3);
+			$data['transaccion'] = $this->Transaccion->ver($id);
+			if ($data['transaccion'][0]->TIPO=='G') {
+				$data['concepto']    = $this->Concepto->gastos();
+			} else {
+				$data['concepto']    = $this->Concepto->ingresos();
+			}
+
+			if ($data['transaccion'][0]->ID_CREDITO=='') {
+				$this->load->view('transacciones/editar', $data);
+			} else {
+				$data['creditos'] = $this->Credito->index();
+				$this->load->view('abonos/editar', $data);
+			}
+			
+		}
+	}
+
 	public function ingresos()
 	{
-			#Vista
+		#Vista
 		$this->load->helper('form');
 		$data['concepto'] = $this->Concepto->ingresos();
 		$data['titulo'] = "Ingresos";
@@ -35,35 +70,19 @@ class Transacciones extends CI_Controller {
 
 	public function gastos()
 	{
-			#Vista
+		#Vista
 		$this->load->helper('form');
 		$data['concepto'] = $this->Concepto->gastos();
 		$data['titulo'] = "Gastos";
 		$this->load->view('transacciones/agregar', $data);
 	}
 
-	public function editar()
-	{
-		if ($_POST) {
-			$evento = $this->input->post();
-			$evento['id']=  $this->uri->segment(3);
-			$this->evento->update($evento);
-			header("Location:" . base_url(). "eventos");
-		} else {
-				#Vista
-			$id             = $this->uri->segment(3);
-			$data['evento'] = $this->evento->get_evento($id);
-			$this->load->helper('form');
-			$this->load->view('eventos/editar', $data);
-		}
-	}
-
 	public function eliminar()
 	{
 		$id = $this->uri->segment(3);
 		if ($id!='') {
-			$this->evento->delete($id);
-			header("Location:" . base_url(). "eventos");
+			$this->Transaccion->delete($id);
+			header("Location:" . base_url(). "transacciones");
 		} else {
 			header("Location:" . base_url());
 		}
