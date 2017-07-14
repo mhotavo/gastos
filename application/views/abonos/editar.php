@@ -7,7 +7,7 @@
 		<div class="row">
 			<div class="col-md-2"></div>
 			<div class="col-md-8">
-				<?=  form_open_multipart('transacciones/editar/'.$transaccion[0]->ID_TRANSACCION.' ', 'class="form-horizontal"');  ?>
+				<?=  form_open_multipart('creditos/editarAbono/'.$transaccion[0]->ID_TRANSACCION.' ', 'class="form-horizontal"');  ?>
 				<fieldset>
 					<div class="form-group">
 						<label for="" class="col-lg-2 control-label">Crédito:</label>

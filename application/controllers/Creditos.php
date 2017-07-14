@@ -56,22 +56,14 @@ class Creditos extends CI_Controller {
 		}
 	}
 
-	public function ver()
-	{
-			#Vista
-		$id          = $this->uri->segment(3);
-		$data['log'] = $this->Log->get_log($id);
-		$this->load->helper('form');
-		$this->load->view('creditos/ver', $data);
-	}
-
-
 	public function agregarAbono()
 	{
 		if ($_POST) {
 			$abono                = $this->input->post();
 			$abono['ID_CONCEPTO'] = "12";
 			$this->Transaccion->add($abono);
+			//Actualizar Saldo del credito
+			$this->Credito->updateSaldo($abono,"add"); 
 			header("Location:" . base_url(). "transacciones");
 		} else {
 			#Vista
@@ -84,10 +76,19 @@ class Creditos extends CI_Controller {
 	public function editarAbono()
 	{
 		if ($_POST) {
-			$abono       = $this->input->post();
-			$abono['id'] = $this->uri->segment(3);
-			$this->abono->update($abono);
-			header("Location:" . base_url(). "eventos");
+			$abono                   = $this->input->post();
+			$abono['ID_TRANSACCION'] = $this->uri->segment(3);
+			$abono['ID_CONCEPTO']    = "12";
+			$abono['SALDO_ANTERIOR'] = 	$this->Transaccion->ver($abono['ID_TRANSACCION'])[0]->VALOR;
+
+			if ($abono['SALDO_ANTERIOR']!=$abono['VALOR']) {
+				$this->Credito->updateSaldo($abono,"update"); 
+				$this->Credito->updateSaldo($abono,"add"); 
+			}
+			$this->Transaccion->update($abono); 
+			//Actualizar Saldo del credito
+			
+			header("Location:" . base_url(). "transacciones");
 		} else {
 				#Vista
 			$id             = $this->uri->segment(3);

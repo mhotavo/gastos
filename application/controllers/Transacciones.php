@@ -30,12 +30,10 @@ class Transacciones extends CI_Controller {
 		if ($_POST) {
 			$transaccion                   = $this->input->post();
 			$transaccion['ID_TRANSACCION'] = $this->uri->segment(3);
-			#Creamos ID del credio o concepto
+			#Creamos ID del credio
 			if (isset($transaccion['ID_CONCEPTO'])) {
 				$transaccion['ID_CREDITO']=NULL;
-			} else {
-				$transaccion['ID_CONCEPTO']='12';
-			}
+			} 
 			$this->Transaccion->update($transaccion);
 			header("Location:" . base_url(). "transacciones");
 		}  else {

@@ -13,8 +13,8 @@
         <table class="table table-striped table-hover dataTable" id="">
           <thead>
             <tr>
-              <th width="">Descripción</i></th>
               <th width="">Concepto</th>
+              <th width="">Descripción</i></th>
               <th width="">Valor</i></th>
               <th width="">Fecha</i></th>
               <th width="" class="hidden-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></th>
@@ -26,13 +26,12 @@
             foreach ($transacciones as $key => $row) 
             {  
               if ($row->TIPO=='G') {
-                echo '<tr class="danger">';
+                echo '<tr class="text-danger bold">';
               } else {
-               echo '<tr class="success">';
+               echo '<tr class="text-success bold">';
              }
-             
-             echo '<td>'. mb_strtoupper($row->DESCRIPCION).'</td>';
              echo '<td>'. mb_strtoupper($row->CONCEPTO).'</td>';
+             echo '<td>'. mb_strtoupper($row->DESCRIPCION).'</td>';
              echo '<td> $ '. number_format($row->VALOR, 0, '.', '.').'</td>';
              echo '<td>'. mb_strtoupper($row->FECHA).'</td>';
              ?>
@@ -64,7 +63,7 @@
       "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
       "autoWidth": true,           
       "sPaginationType": "full_numbers",
-        //"order": [[ 2, 'desc' ]]
+        "order": [[ 3, 'desc' ]]
       });
   } );
 </script>
