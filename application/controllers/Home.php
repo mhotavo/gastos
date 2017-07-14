@@ -18,6 +18,7 @@ class Home extends CI_Controller {
 			"totalIngresos" => $totalIngresos->TOTAL,
 			"saldo" => ($totalIngresos->TOTAL-$totalGastos->TOTAL),
 			); 
+		$data['creditos']=$this->Credito->index();
 		$this->load->view('home/index', $data);
 	}
 

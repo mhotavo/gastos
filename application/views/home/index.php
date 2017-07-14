@@ -8,25 +8,26 @@
        <table class="table table-striped table-hover ">
         <thead>
           <tr>
-            <th>DESCRIPCIÓN</th>
-            <th>SALDO</th>
-            <th>VENCIMIENTO</th>
-            <th>ULTIMO PAGO</th>
-            <th>PRÓXIMO PAGO</th>
+            <th width="20%">DESCRIPCIÓN</th>
+            <th width="20%">VENCIMIENTO</th>
+            <th width="20%">CUOTAS</th>
+            <th width="20%">SALDO</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table> 
-    </div>
-  </div>
+          <?php foreach ($creditos as $key => $row) {
+           echo'<tr>';
+           echo'<td>'.$row->CREDITO.'</td>';
+           echo'<td>'.$row->FECHA_VEN.date("-m-Y").'</td>';
+           echo'<td>'.$row->CUOTAS_PAGAS.' de '.$row->TOTAL_CUOTAS. '</td>';
+           echo'<td> $ '.number_format($row->SALDO, 0, '.', '.').'</td>';
+           echo'</tr>';
+         } ?>
+
+       </tbody>
+     </table> 
+   </div>
+ </div>
 </div>
 
 <?php $this->load->view('overall/footer'); ?> 
