@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-07-2017 a las 18:29:43
+-- Tiempo de generación: 15-07-2017 a las 15:07:27
 -- Versión del servidor: 5.7.14
 -- Versión de PHP: 5.6.25
 
@@ -29,27 +29,29 @@ SET time_zone = "+00:00";
 CREATE TABLE `conceptos` (
   `ID_CONCEPTO` int(11) NOT NULL,
   `CONCEPTO` varchar(40) NOT NULL,
-  `TIPO` varchar(2) DEFAULT NULL
+  `TIPO` varchar(2) DEFAULT NULL,
+  `MENSUAL` varchar(2) NOT NULL DEFAULT 'N'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `conceptos`
 --
 
-INSERT INTO `conceptos` (`ID_CONCEPTO`, `CONCEPTO`, `TIPO`) VALUES
-(3, 'Apuesta', 'G'),
-(8, 'Sueldo', 'I'),
-(9, 'PREMIO APUESTA', 'I'),
-(10, 'FORMATEO', 'I'),
-(12, 'PAGO CREDITOS', 'G'),
-(13, 'ETB MOVIL', 'G'),
-(14, 'SPOTIFY', 'G'),
-(15, 'TRANSPORTE', 'G'),
-(16, 'SERVICIOS PUBLICOS', 'G'),
-(17, 'COMIDA', 'G'),
-(18, 'ROPA', 'G'),
-(19, 'OTROS', 'G'),
-(20, 'AHORRO', 'I');
+INSERT INTO `conceptos` (`ID_CONCEPTO`, `CONCEPTO`, `TIPO`, `MENSUAL`) VALUES
+(3, 'Apuesta', 'G', 'N'),
+(8, 'Sueldo', 'I', 'N'),
+(9, 'PREMIO APUESTA', 'I', 'N'),
+(10, 'FORMATEO', 'I', 'N'),
+(12, 'PAGO CREDITOS', 'G', 'N'),
+(13, 'ETB MOVIL', 'G', 'S'),
+(14, 'SPOTIFY', 'G', 'N'),
+(15, 'TRANSPORTE', 'G', 'N'),
+(16, 'SERVICIOS PUBLICOS', 'G', 'N'),
+(17, 'COMIDA', 'G', 'N'),
+(18, 'ROPA', 'G', 'N'),
+(19, 'OTROS', 'G', 'N'),
+(20, 'AHORRO', 'I', 'N'),
+(22, 'CINE', 'G', 'N');
 
 -- --------------------------------------------------------
 
@@ -100,7 +102,9 @@ CREATE TABLE `transaccion` (
 INSERT INTO `transaccion` (`ID_TRANSACCION`, `ID_CONCEPTO`, `ID_CREDITO`, `DESCRIPCION`, `VALOR`, `FECHA`, `ID_USUARIO`, `FECHALOG`) VALUES
 (10, 8, NULL, 'Pago mes de Julio Queen', 1233000, '2017-07-13', 1, '2017-07-14 17:35:02'),
 (11, 20, NULL, 'Ahorro sueldo Julio', 50000, '2017-07-14', 1, '2017-07-14 18:10:06'),
-(12, 12, 3, 'ICETEX', 180000, '2017-07-13', 1, '2017-07-14 18:29:16');
+(13, 12, 3, 'ICETEX', 180000, '2017-07-13', 1, '2017-07-14 18:37:01'),
+(14, 22, NULL, 'Los minions en royal films', 30000, '2017-07-14', 1, '2017-07-15 15:02:06'),
+(15, 9, NULL, 'Saldo de apuestas anteriores ', 39000, '2017-07-15', 1, '2017-07-15 15:04:50');
 
 -- --------------------------------------------------------
 
@@ -115,15 +119,16 @@ CREATE TABLE `usuarios` (
   `EMAIL` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
   `NOMBRES` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `P_APELLIDO` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `S_APELLIDO` varchar(20) COLLATE utf8_unicode_ci NOT NULL
+  `S_APELLIDO` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `CORTE` int(2) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`ID`, `USER`, `PASS`, `EMAIL`, `NOMBRES`, `P_APELLIDO`, `S_APELLIDO`) VALUES
-(1, 'admin', 'admin', 'milton.otavo@gmail.com', 'MILTON', 'OTAVO', 'VARON');
+INSERT INTO `usuarios` (`ID`, `USER`, `PASS`, `EMAIL`, `NOMBRES`, `P_APELLIDO`, `S_APELLIDO`, `CORTE`) VALUES
+(1, 'admin', 'admin', 'milton.otavo@gmail.com', 'MILTON', 'OTAVO', 'VARON', 10);
 
 --
 -- Índices para tablas volcadas
@@ -165,7 +170,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `conceptos`
 --
 ALTER TABLE `conceptos`
-  MODIFY `ID_CONCEPTO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `ID_CONCEPTO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT de la tabla `creditos`
 --
@@ -175,7 +180,7 @@ ALTER TABLE `creditos`
 -- AUTO_INCREMENT de la tabla `transaccion`
 --
 ALTER TABLE `transaccion`
-  MODIFY `ID_TRANSACCION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `ID_TRANSACCION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --

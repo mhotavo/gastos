@@ -23,7 +23,16 @@
 								<option value="I">Ingreso</option>
 							</select>
 						</div>
-					</div>    
+					</div>   
+					<div class="form-group">
+						<label for="" class="col-md-3 control-label">Mensual</label>
+						<div class="col-md-9">
+							<div class="radio">
+								<label><input type="radio" name="MENSUAL" value="S" <?php echo ($concepto[0]->MENSUAL=='S' ? 'checked': null ) ?> >SI</label>
+								<label><input type="radio" name="MENSUAL" value="N" <?php echo ($concepto[0]->MENSUAL=='N' ? 'checked': null ) ?>>NO</label>
+							</div>
+						</div>
+					</div>   
 					<div class="form-group" align="center">
 						<div class="col-lg-10 col-lg-offset-2">
 							<button type="submit" class="btn btn-success">Guardar</button>

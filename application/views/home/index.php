@@ -8,34 +8,70 @@
        <table class="table table-striped table-hover ">
         <thead>
           <tr>
-            <th width="20%">DESCRIPCIÓN</th>
-            <th width="20%">VENCIMIENTO</th>
-            <th width="20%">CUOTAS</th>
-            <th width="20%">SALDO</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php 
-          $totalCredito=0;
-          foreach ($creditos as $key => $row) {
-           echo'<tr>';
-           echo'<td>'.mb_strtoupper($row->CREDITO).'</td>';
-           echo'<td>'.$row->FECHA_VEN.date("-m-Y").'</td>';
-           echo'<td>'.$row->CUOTAS_PAGAS.' de '.$row->TOTAL_CUOTAS. '</td>';
-           echo'<td> $ '.number_format($row->SALDO, 0, '.', '.').'</td>';
-           echo'</tr>';
-           $totalCredito=$totalCredito+$row->SALDO;
-         } ?>
+           <th colspan="4" class="text-center warning">OBLIGACIONES</th>
+         </tr>
+         <tr>           
+           <th width="20%">DESCRIPCIÓN</th>
+           <th width="20%">VENCIMIENTO</th>
+           <th width="20%">CUOTAS</th>
+           <th width="20%">SALDO</th>
+         </tr>
+       </thead>
+       <tbody>
+        <?php 
+        $totalCredito=0;
+        foreach ($creditos as $key => $row) {
+         echo'<tr>';
+         echo'<td>'.mb_strtoupper($row->CREDITO).'</td>';
+         echo'<td>'.$row->FECHA_VEN.date("-m-Y").'</td>';
+         echo'<td>'.$row->CUOTAS_PAGAS.' de '.$row->TOTAL_CUOTAS. '</td>';
+         echo'<td> $ '.number_format($row->SALDO, 0, '.', '.').'</td>';
+         echo'</tr>';
+         $totalCredito=$totalCredito+$row->SALDO;
+       } ?>
 
-       </tbody>
-       <thead>
-        <tr>
-          <th  colspan="3" ">TOTAL</th>
-          <th><?= number_format($totalCredito, 0, '.', '.') ?></th>
-        </tr>
-      </thead>
-    </table> 
-  </div>
+     </tbody>
+     <tfoot>
+      <tr>
+        <th  colspan="3" ">TOTAL</th>
+        <th><?= number_format($totalCredito, 0, '.', '.') ?></th>
+      </tr>
+    </tfoot>
+  </table>
+  <table class="table table-striped table-hover ">
+    <thead>
+      <tr>
+       <th colspan="4" class="text-center info">CRÉDITOS</th>
+     </tr>
+     <tr>           
+       <th width="20%">DESCRIPCIÓN</th>
+       <th width="20%">VENCIMIENTO</th>
+       <th width="20%">CUOTAS</th>
+       <th width="20%">SALDO</th>
+     </tr>
+   </thead>
+   <tbody>
+    <?php 
+    $totalCredito=0;
+    foreach ($creditos as $key => $row) {
+     echo'<tr>';
+     echo'<td>'.mb_strtoupper($row->CREDITO).'</td>';
+     echo'<td>'.$row->FECHA_VEN.date("-m-Y").'</td>';
+     echo'<td>'.$row->CUOTAS_PAGAS.' de '.$row->TOTAL_CUOTAS. '</td>';
+     echo'<td> $ '.number_format($row->SALDO, 0, '.', '.').'</td>';
+     echo'</tr>';
+     $totalCredito=$totalCredito+$row->SALDO;
+   } ?>
+
+ </tbody>
+ <tfoot>
+  <tr>
+    <th  colspan="3" ">TOTAL</th>
+    <th><?= number_format($totalCredito, 0, '.', '.') ?></th>
+  </tr>
+</tfoot>
+</table> 
+</div>
 </div>
 </div>
 

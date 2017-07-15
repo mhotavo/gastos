@@ -64,8 +64,8 @@ class Transaccion extends CI_Model
 
 
 
-	public function sumaGastos(){
-		$result = $this->db->query("SELECT SUM(t.VALOR) AS TOTAL FROM transaccion t LEFT JOIN conceptos c ON (t.ID_CONCEPTO=c.ID_CONCEPTO) WHERE c.TIPO='G'  AND FECHA BETWEEN '2017-06-15' AND '2017-07-15'");
+	public function sumaGastos($inicio, $fin){
+		$result = $this->db->query("SELECT SUM(t.VALOR) AS TOTAL FROM transaccion t LEFT JOIN conceptos c ON (t.ID_CONCEPTO=c.ID_CONCEPTO) WHERE c.TIPO='G'  AND FECHA BETWEEN '$inicio' AND '$fin'");
 		if ($result->num_rows() > 0) {
 			return $result->row();
 		} else {
@@ -73,8 +73,17 @@ class Transaccion extends CI_Model
 		} 
 	}
 
-	public function sumaIngresos(){
-		$result = $this->db->query("SELECT SUM(t.VALOR) AS TOTAL  FROM transaccion t LEFT JOIN conceptos c ON (t.ID_CONCEPTO=c.ID_CONCEPTO) WHERE c.TIPO='I'  AND FECHA BETWEEN '2017-06-15' AND '2017-07-15'");
+	public function sumaIngresos($inicio, $fin){
+		$result = $this->db->query("SELECT SUM(t.VALOR) AS TOTAL  FROM transaccion t LEFT JOIN conceptos c ON (t.ID_CONCEPTO=c.ID_CONCEPTO) WHERE c.TIPO='I'  AND FECHA BETWEEN '$inicio' AND '$fin'");
+		if ($result->num_rows() > 0) {
+			return $result->row();
+		} else {
+			return null;
+		} 
+	}
+
+	public function movimientosMes($inicio, $fin){
+		$result = $this->db->query("SELECT *  FROM transaccion t LEFT JOIN conceptos c ON (t.ID_CONCEPTO=c.ID_CONCEPTO) WHERE  FECHA BETWEEN '$inicio' AND '$fin'");
 		if ($result->num_rows() > 0) {
 			return $result->row();
 		} else {

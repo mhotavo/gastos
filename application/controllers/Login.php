@@ -28,6 +28,7 @@ class Login extends CI_Controller {
 					'id'    => $fila->ID,
 					'user'  => $fila->USER,
 					'name'  => $fila->NOMBRES . ' ' . $fila->P_APELLIDO,
+					'corte'  => $fila->CORTE ,
 					'login' => true
 					);
 				$this->session->set_userdata($data);

@@ -6,6 +6,7 @@ class Concepto extends CI_Model
 	public $ID_CONCEPTO;
 	public $CONCEPTO;
 	public $TIPO;
+	public $MENSUAL;
 
 	public function ver($id='')
 	{
@@ -37,8 +38,9 @@ class Concepto extends CI_Model
 	public function add($concepto=null)
 	{
 		if ($concepto!=null) {
-			$this->CONCEPTO      = $concepto['NOMBRE'];
-			$this->TIPO      = $concepto['TIPO'];
+			$this->CONCEPTO = $concepto['NOMBRE'];
+			$this->TIPO     = $concepto['TIPO'];
+			$this->MENSUAL  = $concepto['MENSUAL'];
 			$this->db->insert('conceptos', $this);
 		}
 	}
@@ -47,10 +49,10 @@ class Concepto extends CI_Model
 	{
 
 		if ($concepto!=null) {
-
 			$this->ID_CONCEPTO = $concepto['ID_CONCEPTO'];
 			$this->CONCEPTO    = $concepto['NOMBRE'];
 			$this->TIPO        = $concepto['TIPO'];
+			$this->MENSUAL     = $concepto['MENSUAL'];
 			$this->db->where('ID_CONCEPTO', $this->ID_CONCEPTO); 
 			$this->db->update('conceptos', $this);
 		}
