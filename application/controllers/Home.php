@@ -27,13 +27,31 @@ class Home extends CI_Controller {
 			"totalIngresos" => $totalIngresos->TOTAL,
 			"saldo"         => ($totalIngresos->TOTAL-$totalGastos->TOTAL)
 			); 
+
 		$mensuales= $this->Concepto->mensuales();
-		foreach ($mensuales as $key => $value) {
+		//Buscamos movimientos del mes para cada concepto
+		foreach ($mensuales as $key => $row) {
+			$concepto      = $row->ID_CONCEPTO;
+			$movimientos = $this->Transaccion->mensuales($inicio, $fin, 12 );
+			if ($movimientos[0]->FECHA!='') {
+				$mensuales[$key]->ULTIMO_PAGO =$movimientos[0]->FECHA;  
+			} else {
+				$mensuales[$key]->ULTIMO_PAGO =null;
+			}
+			
+			if ($movimientos[0]->VALOR!='') {
+				$mensuales[$key]->VALOR_PAGO =$movimientos[0]->VALOR;  
+			} else {
+				$mensuales[$key]->VALOR_PAGO =null;
+			}
+			
 
 		}
-		exit;
-		#$data['mensuales'] = $this->Concepto->mensuales();
+
+
+
 		$data['creditos']    = $this->Credito->index();
+		$data['mensuales']    = $mensuales;
 		$this->load->view('home/index', $data);
 	}
 

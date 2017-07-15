@@ -56,8 +56,9 @@
      echo'<tr>';
      echo'<td>'.mb_strtoupper($row->CONCEPTO).'</td>';
      echo'<td>'.str_pad($row->FECHA_VEN, 2, '0',STR_PAD_LEFT ).date("-m-Y").'</td>';
-     echo'<td></td>';
-     echo'<td></td>';
+     echo'<td>'.mb_strtoupper($row->ULTIMO_PAGO).'</td>';
+     echo'<td>'.mb_strtoupper($row->VALOR_PAGO).'</td>';
+ 
      echo'</tr>';
    } ?>
 
