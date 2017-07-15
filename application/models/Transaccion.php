@@ -82,8 +82,8 @@ class Transaccion extends CI_Model
 		} 
 	}
 
-	public function mensuales($inicio, $fin, $concepto){
-		$query = $this->db->query("SELECT *  FROM transaccion t LEFT JOIN conceptos c ON (t.ID_CONCEPTO=c.ID_CONCEPTO) WHERE c.ID_CONCEPTO='$concepto' AND c.MENSUAL='S' AND FECHA BETWEEN '$inicio' AND '$fin' ORDER BY t.FECHA DESC limit 1");
+	public function mensuales($inicio, $fin, $tipo){
+		$query = $this->db->query("SELECT *  FROM transaccion t LEFT JOIN conceptos c ON (t.ID_CONCEPTO=c.ID_CONCEPTO) WHERE c.TIPO='$tipo' AND FECHA BETWEEN '$inicio' AND '$fin' ORDER BY t.FECHA DESC, c.CONCEPTO DESC");
 		return $query->result();
 	}
 

@@ -24,12 +24,24 @@ class Login extends CI_Controller {
 
 		if ($fila!=null) {
 			if ($fila->PASS == $inputPass ) {
+
+				$dia_corte = $fila->CORTE;
+				$inicio      = date("Y-m-$dia_corte");
+				if (date("d")<$dia_corte ) {
+					$inicio = strtotime($inicio."- 1 months");
+					$inicio = date("Y-m-d",$inicio);
+				}
+				$fin       = strtotime($inicio."+ 1 months");
+				$fin       = date("Y-m-d",$fin);
+
 				$data = array (
-					'id'    => $fila->ID,
-					'user'  => $fila->USER,
-					'name'  => $fila->NOMBRES . ' ' . $fila->P_APELLIDO,
-					'corte'  => $fila->CORTE ,
-					'login' => true
+					'id'     => $fila->ID,
+					'user'   => $fila->USER,
+					'name'   => $fila->NOMBRES . ' ' . $fila->P_APELLIDO,
+					'corte'  => $fila->CORTE,
+					'inicio' => $inicio,
+					'fin'    => $fin ,
+					'login'  => true
 					);
 				$this->session->set_userdata($data);
 				header("Location:" . base_url() );

@@ -11,15 +11,8 @@ class Home extends CI_Controller {
 
 
 	public function index(){
-		$dia_corte = $this->session->userdata('corte');
-		$inicio      = date("Y-m-$dia_corte");
-		if (date("d")<$dia_corte ) {
-			$inicio = strtotime($inicio."- 1 months");
-			$inicio = date("Y-m-d",$inicio);
-		}
-		$fin       = strtotime($inicio."+ 1 months");
-		$fin       = date("Y-m-d",$fin);
-
+		$inicio=$this->session->userdata('inicio');
+		$fin=$this->session->userdata('fin');
 		$totalGastos   = $this->Transaccion->sumaGastos($inicio, $fin);
 		$totalIngresos = $this->Transaccion->sumaIngresos($inicio, $fin);
 		$data['datos'] = array(
@@ -28,32 +21,20 @@ class Home extends CI_Controller {
 			"saldo"         => ($totalIngresos->TOTAL-$totalGastos->TOTAL)
 			); 
 
-		$mensuales= $this->Concepto->mensuales();
-		//Buscamos movimientos del mes para cada concepto
-		foreach ($mensuales as $key => $row) {
-			$concepto      = $row->ID_CONCEPTO;
-			$movimientos = $this->Transaccion->mensuales($inicio, $fin, 12 );
-			if ($movimientos[0]->FECHA!='') {
-				$mensuales[$key]->ULTIMO_PAGO =$movimientos[0]->FECHA;  
-			} else {
-				$mensuales[$key]->ULTIMO_PAGO =null;
-			}
-			
-			if ($movimientos[0]->VALOR!='') {
-				$mensuales[$key]->VALOR_PAGO =$movimientos[0]->VALOR;  
-			} else {
-				$mensuales[$key]->VALOR_PAGO =null;
-			}
-			
-
-		}
-
-
 
 		$data['creditos']    = $this->Credito->index();
-		$data['mensuales']    = $mensuales;
+		$data['gastos']    = $this->Transaccion->mensuales($inicio,$fin, 'G');
+		$data['ingresos']    = $this->Transaccion->mensuales($inicio,$fin, 'I');
+
 		$this->load->view('home/index', $data);
 	}
+
+	public function deudas(){
+
+		$data['creditos']    = $this->Credito->index();
+		$this->load->view('home/deudas', $data);
+	}
+
 
 	public function backup()
 	{
