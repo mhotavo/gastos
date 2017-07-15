@@ -59,6 +59,16 @@
 
 	<script>
 		$("#ID_CONCEPTO").val("<?php echo $transaccion[0]->ID_CONCEPTO;  ?>");
+
+		$('#ID_CONCEPTO').change(function(){
+			var name=$("#ID_CONCEPTO option[value='"+$(this).val()+"']").text();
+			if ($(this).val()=='8') {
+
+				$("textarea#DESCRIPCION").val('PAGO QUEEN - ' + moment().format('MMMM YYYY') );
+			} else {
+				$("textarea#DESCRIPCION").val('');
+			}
+		});
 	</script>
 </body>
 </html>   

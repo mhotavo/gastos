@@ -57,4 +57,15 @@
 </div>
 <?php $this->load->view('overall/footer'); ?>
 </body>
+<script>
+  $('#ID_CONCEPTO').change(function(){
+    var name=$("#ID_CONCEPTO option[value='"+$(this).val()+"']").text();
+    if ($(this).val()=='8') {
+
+      $("textarea#DESCRIPCION").val('PAGO QUEEN - ' + moment().format('MMMM YYYY') );
+    } else {
+      $("textarea#DESCRIPCION").val('');
+    }
+  });
+</script>
 </html>   

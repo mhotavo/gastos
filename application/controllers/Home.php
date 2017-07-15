@@ -14,25 +14,26 @@ class Home extends CI_Controller {
 		$dia_corte = $this->session->userdata('corte');
 		$inicio      = date("Y-m-$dia_corte");
 		if (date("d")<$dia_corte ) {
-			$inicio      = strtotime($inicio."- 1 months");
+			$inicio = strtotime($inicio."- 1 months");
 			$inicio = date("Y-m-d",$inicio);
 		}
 		$fin       = strtotime($inicio."+ 1 months");
 		$fin       = date("Y-m-d",$fin);
 
- 
-		$totalGastos=$this->Transaccion->sumaGastos($inicio, $fin);
-		$totalIngresos=$this->Transaccion->sumaIngresos($inicio, $fin);
-		$movimientos=$this->Transaccion->movimientosMes($inicio, $fin);
-		print_r($movimientos);
+		$totalGastos   = $this->Transaccion->sumaGastos($inicio, $fin);
+		$totalIngresos = $this->Transaccion->sumaIngresos($inicio, $fin);
 		$data['datos'] = array(
-			"totalGastos" => $totalGastos->TOTAL,
+			"totalGastos"   => $totalGastos->TOTAL,
 			"totalIngresos" => $totalIngresos->TOTAL,
-			"saldo" => ($totalIngresos->TOTAL-$totalGastos->TOTAL),
-			"movimientos" => $movimientos,
-
+			"saldo"         => ($totalIngresos->TOTAL-$totalGastos->TOTAL)
 			); 
-		$data['creditos']=$this->Credito->index(); exit;
+		$mensuales= $this->Concepto->mensuales();
+		foreach ($mensuales as $key => $value) {
+
+		}
+		exit;
+		#$data['mensuales'] = $this->Concepto->mensuales();
+		$data['creditos']    = $this->Credito->index();
 		$this->load->view('home/index', $data);
 	}
 

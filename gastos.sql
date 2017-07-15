@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-07-2017 a las 15:07:27
+-- Tiempo de generación: 15-07-2017 a las 16:44:25
 -- Versión del servidor: 5.7.14
 -- Versión de PHP: 5.6.25
 
@@ -30,28 +30,31 @@ CREATE TABLE `conceptos` (
   `ID_CONCEPTO` int(11) NOT NULL,
   `CONCEPTO` varchar(40) NOT NULL,
   `TIPO` varchar(2) DEFAULT NULL,
-  `MENSUAL` varchar(2) NOT NULL DEFAULT 'N'
+  `MENSUAL` varchar(2) NOT NULL DEFAULT 'N',
+  `FECHA_VEN` int(2) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `conceptos`
 --
 
-INSERT INTO `conceptos` (`ID_CONCEPTO`, `CONCEPTO`, `TIPO`, `MENSUAL`) VALUES
-(3, 'Apuesta', 'G', 'N'),
-(8, 'Sueldo', 'I', 'N'),
-(9, 'PREMIO APUESTA', 'I', 'N'),
-(10, 'FORMATEO', 'I', 'N'),
-(12, 'PAGO CREDITOS', 'G', 'N'),
-(13, 'ETB MOVIL', 'G', 'S'),
-(14, 'SPOTIFY', 'G', 'N'),
-(15, 'TRANSPORTE', 'G', 'N'),
-(16, 'SERVICIOS PUBLICOS', 'G', 'N'),
-(17, 'COMIDA', 'G', 'N'),
-(18, 'ROPA', 'G', 'N'),
-(19, 'OTROS', 'G', 'N'),
-(20, 'AHORRO', 'I', 'N'),
-(22, 'CINE', 'G', 'N');
+INSERT INTO `conceptos` (`ID_CONCEPTO`, `CONCEPTO`, `TIPO`, `MENSUAL`, `FECHA_VEN`) VALUES
+(3, 'Apuesta', 'G', 'N', NULL),
+(8, 'Sueldo', 'I', 'N', NULL),
+(9, 'PREMIO APUESTA', 'I', 'N', NULL),
+(10, 'FORMATEO', 'I', 'N', NULL),
+(12, 'PAGO CREDITOS', 'G', 'S', NULL),
+(13, 'ETB MOVIL', 'G', 'S', 5),
+(14, 'SPOTIFY', 'G', 'N', NULL),
+(15, 'TRANSPORTE', 'G', 'N', NULL),
+(16, 'RECIBO DE LA LUZ', 'G', 'S', 16),
+(17, 'COMIDA', 'G', 'N', NULL),
+(18, 'ROPA', 'G', 'N', NULL),
+(19, 'OTROS', 'G', 'N', NULL),
+(20, 'AHORRO', 'I', 'N', NULL),
+(22, 'CINE', 'G', 'N', NULL),
+(23, 'SPOTIFY', 'G', 'S', 17),
+(24, 'TRANSPORTE', 'G', 'S', 15);
 
 -- --------------------------------------------------------
 
@@ -100,11 +103,12 @@ CREATE TABLE `transaccion` (
 --
 
 INSERT INTO `transaccion` (`ID_TRANSACCION`, `ID_CONCEPTO`, `ID_CREDITO`, `DESCRIPCION`, `VALOR`, `FECHA`, `ID_USUARIO`, `FECHALOG`) VALUES
-(10, 8, NULL, 'Pago mes de Julio Queen', 1233000, '2017-07-13', 1, '2017-07-14 17:35:02'),
+(10, 8, NULL, 'PAGO QUEEN - Julio 2017', 1233000, '2017-07-13', 1, '2017-07-15 16:04:02'),
 (11, 20, NULL, 'Ahorro sueldo Julio', 50000, '2017-07-14', 1, '2017-07-14 18:10:06'),
 (13, 12, 3, 'ICETEX', 180000, '2017-07-13', 1, '2017-07-14 18:37:01'),
 (14, 22, NULL, 'Los minions en royal films', 30000, '2017-07-14', 1, '2017-07-15 15:02:06'),
-(15, 9, NULL, 'Saldo de apuestas anteriores ', 39000, '2017-07-15', 1, '2017-07-15 15:04:50');
+(15, 9, NULL, 'Saldo de apuestas anteriores ', 39000, '2017-07-15', 1, '2017-07-15 15:04:50'),
+(16, 13, NULL, 'Junio- Julio', 40000, '2017-07-04', 1, '2017-07-15 16:41:45');
 
 -- --------------------------------------------------------
 
@@ -170,7 +174,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `conceptos`
 --
 ALTER TABLE `conceptos`
-  MODIFY `ID_CONCEPTO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `ID_CONCEPTO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT de la tabla `creditos`
 --
@@ -180,7 +184,7 @@ ALTER TABLE `creditos`
 -- AUTO_INCREMENT de la tabla `transaccion`
 --
 ALTER TABLE `transaccion`
-  MODIFY `ID_TRANSACCION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `ID_TRANSACCION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --

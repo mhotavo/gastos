@@ -82,13 +82,9 @@ class Transaccion extends CI_Model
 		} 
 	}
 
-	public function movimientosMes($inicio, $fin){
-		$result = $this->db->query("SELECT *  FROM transaccion t LEFT JOIN conceptos c ON (t.ID_CONCEPTO=c.ID_CONCEPTO) WHERE  FECHA BETWEEN '$inicio' AND '$fin'");
-		if ($result->num_rows() > 0) {
-			return $result->row();
-		} else {
-			return null;
-		} 
+	public function mensuales($inicio, $fin){
+		$query = $this->db->query("SELECT *  FROM transaccion t LEFT JOIN conceptos c ON (t.ID_CONCEPTO=c.ID_CONCEPTO) WHERE c.MENSUAL='S' AND FECHA BETWEEN '$inicio' AND '$fin'");
+		return $query->result();
 	}
 
 

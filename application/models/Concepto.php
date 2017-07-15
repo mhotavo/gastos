@@ -7,6 +7,7 @@ class Concepto extends CI_Model
 	public $CONCEPTO;
 	public $TIPO;
 	public $MENSUAL;
+	public $FECHA_VEN;
 
 	public function ver($id='')
 	{
@@ -21,6 +22,13 @@ class Concepto extends CI_Model
 		$query = $this->db->query('SELECT * FROM conceptos ORDER BY CONCEPTO ASC'); 
 		return $query->result();
 	} 
+
+	public function mensuales()
+	{
+		$query = $this->db->query('SELECT * FROM conceptos WHERE MENSUAL="S" AND ID_CONCEPTO!="12" ORDER BY CONCEPTO ASC'); 
+		return $query->result();
+	} 
+
 
 	public function ingresos()
 	{
@@ -41,6 +49,7 @@ class Concepto extends CI_Model
 			$this->CONCEPTO = $concepto['NOMBRE'];
 			$this->TIPO     = $concepto['TIPO'];
 			$this->MENSUAL  = $concepto['MENSUAL'];
+			$this->FECHA_VEN  = $concepto['FECHA_VEN'];
 			$this->db->insert('conceptos', $this);
 		}
 	}
@@ -53,6 +62,7 @@ class Concepto extends CI_Model
 			$this->CONCEPTO    = $concepto['NOMBRE'];
 			$this->TIPO        = $concepto['TIPO'];
 			$this->MENSUAL     = $concepto['MENSUAL'];
+			$this->FECHA_VEN  = $concepto['FECHA_VEN'];
 			$this->db->where('ID_CONCEPTO', $this->ID_CONCEPTO); 
 			$this->db->update('conceptos', $this);
 		}

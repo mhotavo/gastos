@@ -8,7 +8,7 @@
        <table class="table table-striped table-hover ">
         <thead>
           <tr>
-           <th colspan="4" class="text-center warning">OBLIGACIONES</th>
+           <th colspan="4" class="text-center info">CRÉDITOS</th>
          </tr>
          <tr>           
            <th width="20%">DESCRIPCIÓN</th>
@@ -41,26 +41,24 @@
   <table class="table table-striped table-hover ">
     <thead>
       <tr>
-       <th colspan="4" class="text-center info">CRÉDITOS</th>
+       <th colspan="4" class="text-center warning">OBLIGACIONES</th>
      </tr>
      <tr>           
-       <th width="20%">DESCRIPCIÓN</th>
-       <th width="20%">VENCIMIENTO</th>
-       <th width="20%">CUOTAS</th>
-       <th width="20%">SALDO</th>
+       <th width="30%">DESCRIPCIÓN</th>
+       <th width="20%">VENCIIENTO</th>
+       <th width="20%">ESTADO</th>
+       <th width="10%">VALOR</th>
      </tr>
    </thead>
    <tbody>
     <?php 
-    $totalCredito=0;
-    foreach ($creditos as $key => $row) {
+    foreach ($mensuales as $key => $row) {
      echo'<tr>';
-     echo'<td>'.mb_strtoupper($row->CREDITO).'</td>';
-     echo'<td>'.$row->FECHA_VEN.date("-m-Y").'</td>';
-     echo'<td>'.$row->CUOTAS_PAGAS.' de '.$row->TOTAL_CUOTAS. '</td>';
-     echo'<td> $ '.number_format($row->SALDO, 0, '.', '.').'</td>';
+     echo'<td>'.mb_strtoupper($row->CONCEPTO).'</td>';
+     echo'<td>'.str_pad($row->FECHA_VEN, 2, '0',STR_PAD_LEFT ).date("-m-Y").'</td>';
+     echo'<td></td>';
+     echo'<td></td>';
      echo'</tr>';
-     $totalCredito=$totalCredito+$row->SALDO;
    } ?>
 
  </tbody>

@@ -14,7 +14,7 @@
 						<div class="col-md-9">
 							<input type="text" class="form-control" name="NOMBRE" id="NOMBRE" value="<?php echo $concepto[0]->CONCEPTO;  ?>">
 						</div>
-					</div>    
+					</div>   
 					<div class="form-group">
 						<label for="" class="col-md-3 control-label">Tipo</label>
 						<div class="col-md-9">
@@ -23,7 +23,13 @@
 								<option value="I">Ingreso</option>
 							</select>
 						</div>
-					</div>   
+					</div>
+					<div class="form-group">
+						<label for="" class="col-md-3 control-label">Día Vencimiento</label>
+						<div class="col-md-9">
+							<input type="number" maxlength="2" class="form-control" name="FECHA_VEN" id="FECHA_VEN" value="<?php echo $concepto[0]->FECHA_VEN;  ?>">
+						</div>
+					</div>       
 					<div class="form-group">
 						<label for="" class="col-md-3 control-label">Mensual</label>
 						<div class="col-md-9">

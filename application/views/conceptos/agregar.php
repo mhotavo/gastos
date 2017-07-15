@@ -23,7 +23,13 @@
                 <option value="I">Ingreso</option>
               </select>
             </div>
-          </div>    
+          </div>  
+          <div class="form-group">
+            <label for="" class="col-md-2 control-label">Día Vencimiento</label>
+            <div class="col-md-8">
+              <input type="number" maxlength="2" class="form-control" name="FECHA_VEN" id="FECHA_VEN" value="">
+            </div>
+          </div>     
           <div class="form-group">
             <label for="" class="col-md-2 control-label">Mensual</label>
             <div class="col-md-8">
