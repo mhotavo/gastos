@@ -21,10 +21,39 @@ class Home extends CI_Controller {
 			"saldo"         => ($totalIngresos->TOTAL-$totalGastos->TOTAL)
 			); 
 
+		$data['creditos'] = $this->Credito->index();
+		$data['gastos']   = $this->Transaccion->mensuales($inicio,$fin, 'G');
+		$data['ingresos'] = $this->Transaccion->mensuales($inicio,$fin, 'I');
+		
+		foreach ($this->Credito->index() as $a => $credito) {
 
-		$data['creditos']    = $this->Credito->index();
-		$data['gastos']    = $this->Transaccion->mensuales($inicio,$fin, 'G');
-		$data['ingresos']    = $this->Transaccion->mensuales($inicio,$fin, 'I');
+			$ultimo=date("Y-m", strtotime($credito->ULTIMO_PAGO));  
+			if (date("Y-m")>$ultimo ) {
+				$data['creditosPorPagar'][$a] = array(
+					'ID_CONCEPTO' => $credito->ID, 
+					'CONCEPTO' => $credito->CREDITO, 
+					'VENCE' => $credito->FECHA_VEN, 
+					'ESTADO' => 'PAGO PENDIENTE', 
+					'TIPO' => 'CREDITO', 
+					);
+			}
+
+
+		}
+		foreach ($this->Concepto->index() as $a => $concepto) {
+			if ($concepto->MENSUAL=='S' AND $concepto->ID_CONCEPTO!='12'  ) {
+				foreach ($data['gastos'] as $b => $pago) {
+					$data['porPagar'][$a] = array(
+						'ID_CONCEPTO' => $concepto->ID_CONCEPTO, 
+						'CONCEPTO' => $concepto->CONCEPTO, 
+						'VENCE' => $concepto->FECHA_VEN, 
+						'ESTADO' => 'PAGO PENDIENTE', 
+						'TIPO' => 'OTROS CONCEPTOS', 
+						);
+				}
+			}
+
+		}
 
 		$this->load->view('home/index', $data);
 	}

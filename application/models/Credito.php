@@ -77,13 +77,15 @@ class Credito extends CI_Model
 
 	public function updateSaldo($credito=null, $action='')
 	{
+		$fecha= date("Y-m-d");
 		if ($action=='add') {
 			$this->ID   = $credito['ID_CREDITO'];
 			$query = $this->db->query('
 				UPDATE creditos 
 				SET SALDO=(SALDO-'.$credito['VALOR'].') ,
 				TOTAL_CUOTAS=(TOTAL_CUOTAS-1),
-				CUOTAS_PAGAS=(CUOTAS_PAGAS+1)
+				CUOTAS_PAGAS=(CUOTAS_PAGAS+1),
+				ULTIMO_PAGO="'.$fecha.'"
 				WHERE ID='.$this->ID.' '); 
 		} elseif ($action=='update') {
 			$this->ID   = $credito['ID_CREDITO'];
@@ -91,7 +93,8 @@ class Credito extends CI_Model
 				UPDATE creditos 
 				SET SALDO=(SALDO+'.$credito['SALDO_ANTERIOR'].') ,
 				TOTAL_CUOTAS=(TOTAL_CUOTAS+1),
-				CUOTAS_PAGAS=(CUOTAS_PAGAS-1)
+				CUOTAS_PAGAS=(CUOTAS_PAGAS-1),
+				ULTIMO_PAGO="'.$fecha.'"
 				WHERE ID='.$this->ID.' '); 
 		}
 	}

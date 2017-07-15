@@ -73,7 +73,41 @@
     </tr>
   </tfoot>
 </table> 
+<!--<table class="table table-striped table-hover ">
+  <thead>
+    <tr>
+      <th colspan="4" class="text-center danger">POR PAGAR</th>
+    </tr>
+    <tr>           
+      <th width="25%">DESCRIPCIÓN</th>
+      <th width="15%">FECHA</th>
+      <th width="30%">TIPO</th>
+      <th width="30%">ESTADO</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php 
+    foreach ($creditosPorPagar as $key => $row) {
+     echo'<tr>';
+     echo'<td>'.mb_strtoupper($row['CONCEPTO']).'</td>';
+     echo'<td>'.date("Y-m-").$row['VENCE'].'</td>';
+     echo'<td>'.mb_strtoupper($row['TIPO']).'</td>';
+     echo'<td>'.mb_strtoupper($row['ESTADO']).'</td>';
+     echo'</tr>';
+   } 
+   foreach ($porPagar as $key => $row) {
+     echo'<tr>';
+     echo'<td>'.mb_strtoupper($row['CONCEPTO']).'</td>';
+     echo'<td>'.date("Y-m-").$row['VENCE'].'</td>';
+     echo'<td>'.mb_strtoupper($row['TIPO']).'</td>';
+     echo'<td>'.mb_strtoupper($row['ESTADO']).'</td>';
+     echo'</tr>';
+   } 
 
+   ?>
+
+ </tbody>
+</table> -->
 
 </div>
 </div>
