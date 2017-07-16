@@ -13,6 +13,9 @@
         <table class="table table-striped table-hover dataTable" id="">
           <thead>
             <tr>
+              <th colspan="3" class="text-center info">CONCEPTOS</th>
+            </tr>
+            <tr>
               <th width="40%">Concepto</th>
               <th width="30%">Tipo</i></th>
               <th width="30%"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></th>

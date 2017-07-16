@@ -16,7 +16,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<link rel="stylesheet" href="<?=base_url()?>public/css/skins/_all-skins.min.css"/>
 	<script src="<?=base_url()?>public/js/generales.js"></script>
 	<style type="text/css">
-		.login-page, .register-page {background-color: #16C737;}
+		.login-page, .register-page {background-color: #1BB538;}
 	</style>
 </head>
 <body class="hold-transition login-page">
@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<div class="login-logo">
 			<a href="">
 				<b>
-				Gastos
+					Gastos <i class="fa fa-bar-chart" aria-hidden="true"></i>
 				</b>
 				<i class="fa fa-user-o" aria-hidden="true">
 				</i>

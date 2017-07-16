@@ -13,6 +13,9 @@
         <table class="table table-striped table-hover dataTable" id="">
           <thead>
             <tr>
+              <th colspan="5" class="text-center info">TRANSACCIONES</th>
+            </tr>
+            <tr>
               <th width="" class="hidden-xs">Concepto</th>
               <th width="25%">Descripción</i></th>
               <th width="" class="hidden-xs">Fecha</i></th>

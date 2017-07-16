@@ -13,6 +13,9 @@
         <table class="table table-striped table-hover dataTable" id="">
           <thead>
             <tr>
+              <th colspan="4" class="text-center info">CREDITOS</th>
+            </tr>
+            <tr>
               <th width="30%">Crédito</th>
               <th width="">Saldo</i></th>
               <th width="" class="hidden-xs">Día Ven.</i></th>
