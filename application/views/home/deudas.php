@@ -13,7 +13,7 @@
 						</tr>
 						<tr>           
 							<th width="20%">DESCRIPCIÓN</th>
-							<th width="20%">VENCIMIENTO</th>
+							<th width="20%" class="hidden-xs">VENCIMIENTO</th>
 							<th width="20%">CUOTAS</th>
 							<th width="20%">SALDO</th>
 						</tr>
@@ -24,7 +24,7 @@
 						foreach ($creditos as $key => $row) {
 							echo'<tr>';
 							echo'<td>'.mb_strtoupper($row->CREDITO).'</td>';
-							echo'<td>'.$row->FECHA_VEN.date("-m-Y").'</td>';
+							echo'<td class="hidden-xs">'.$row->FECHA_VEN.date("-m-Y").'</td>';
 							echo'<td>'.$row->CUOTAS_PAGAS.' de '.$row->TOTAL_CUOTAS. '</td>';
 							echo'<td> $ '.number_format($row->SALDO, 0, '.', '.').'</td>';
 							echo'</tr>';
@@ -33,10 +33,9 @@
 
 					</tbody>
 					<tfoot>
-						<tr>
-							<th  colspan="3" ">TOTAL</th>
-							<th>$ <?= number_format($totalCredito, 0, '.', '.') ?></th>
-						</tr>
+						<th  class="hidden-xs"></th>
+						<th  colspan="2">SALDO TOTAL</th>
+						<th>$ <?= number_format($totalCredito, 0, '.', '.') ?></th>
 					</tfoot>
 				</table>
 

@@ -15,7 +15,7 @@
             <tr>
               <th width="40%">Concepto</th>
               <th width="30%">Tipo</i></th>
-              <th width="30%" class="hidden-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></th>
+              <th width="30%"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></th>
             </tr>
           </thead>
           <tbody style="font-size: 14px"> 
@@ -32,10 +32,10 @@
                 break;
               }
               echo '<tr>';
-              echo '<td class="text-default hidden-xs"><b>'. (mb_strtoupper($row->CONCEPTO)).'</b></td>';
+              echo '<td class="text-default"><b>'. (mb_strtoupper($row->CONCEPTO)).'</b></td>';
               echo '<td>'. mb_strtoupper($row->TIPO).'</td>';
               ?>
-              <td class="hidden-xs">
+              <td>
                 <a  class="btn btn-warning" href="<?php echo base_url(); ?>conceptos/editar/<?php echo $row->ID_CONCEPTO; ?>"><i class="fa fa-cog" aria-hidden="true"></i></a> 
                 <a  class="btn btn-danger" onclick="DeleteItem('¿Está seguro de eliminar este concepto?', '<?php echo base_url(); ?>conceptos/eliminar/<?php echo $row->ID_CONCEPTO ?>')" >
                   <i class="fa fa-trash" aria-hidden="true"></i>

@@ -13,7 +13,7 @@
             <tr>           
              <th width="30%">DESCRIPCIÓN</th>
              <th width="20%">FECHA</th>
-             <th width="20%">CONCEPTO</th>
+             <th width="20%" class="hidden-xs">CONCEPTO</th>
              <th width="10%">VALOR</th>
            </tr>
          </thead>
@@ -23,7 +23,7 @@
            echo'<tr>';
            echo'<td>'.mb_strtoupper($row->DESCRIPCION).'</td>';
            echo'<td>'.$row->FECHA.'</td>';
-           echo'<td>'.mb_strtoupper($row->CONCEPTO).'</td>';
+           echo'<td class="hidden-xs">'.mb_strtoupper($row->CONCEPTO).'</td>';
 
            echo'<td>$ '.number_format($row->VALOR, 0, '.', '.').'</td>';
            echo'</tr>';
@@ -32,7 +32,8 @@
        </tbody>
        <tfoot>
         <tr>
-          <th  colspan="3" ">TOTAL INGRESOS</th>
+          <th  class="hidden-xs"></th>
+          <th  colspan="2">TOTAL INGRESOS</th>
           <th>$ <?= number_format($datos['totalIngresos'], 0, '.', '.') ?></th>
         </tr>
       </tfoot>
@@ -40,12 +41,12 @@
     <table class="table table-striped table-hover ">
       <thead>
         <tr>
-         <th colspan="4" class="text-center warning">GASTOS DEL MES</th>
-       </tr>
-       <tr>           
+          <th colspan="4" class="text-center warning">GASTOS DEL MES</th>
+        </tr>
+        <tr>           
          <th width="30%">DESCRIPCIÓN</th>
          <th width="20%">FECHA</th>
-         <th width="20%">CONCEPTO</th>
+         <th width="20%" class="hidden-xs">CONCEPTO</th>
          <th width="10%">VALOR</th>
        </tr>
      </thead>
@@ -55,7 +56,7 @@
        echo'<tr>';
        echo'<td>'.mb_strtoupper($row->DESCRIPCION).'</td>';
        echo'<td>'.$row->FECHA.'</td>';
-       echo'<td>'.mb_strtoupper($row->CONCEPTO).'</td>';
+       echo'<td class="hidden-xs">'.mb_strtoupper($row->CONCEPTO).'</td>';
 
        echo'<td>$ '.number_format($row->VALOR, 0, '.', '.').'</td>';
        echo'</tr>';
@@ -64,15 +65,17 @@
    </tbody>
    <tfoot>
     <tr>
-      <th  colspan="3" ">TOTAL GASTOS</th>
+      <th  class="hidden-xs"></th>
+      <th  colspan="2">TOTAL INGRESOS</th>
       <th>$ <?= number_format($datos['totalGastos'], 0, '.', '.') ?></th>
     </tr>
     <tr class="info">
-      <th  colspan="3" " >SALDO</th>
+      <th  class="hidden-xs"></th>
+      <th  colspan="2">SALDO TOTAL</th>
       <th>$ <?= number_format($datos['saldo'], 0, '.', '.') ?></th>
     </tr>
   </tfoot>
-</table> 
+</table>  
 <!--<table class="table table-striped table-hover ">
   <thead>
     <tr>

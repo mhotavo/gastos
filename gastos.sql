@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.4
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-07-2017 a las 16:44:25
--- Versión del servidor: 5.7.14
--- Versión de PHP: 5.6.25
+-- Tiempo de generación: 16-07-2017 a las 06:22:10
+-- Versión del servidor: 10.1.13-MariaDB
+-- Versión de PHP: 5.6.20
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -46,15 +46,13 @@ INSERT INTO `conceptos` (`ID_CONCEPTO`, `CONCEPTO`, `TIPO`, `MENSUAL`, `FECHA_VE
 (12, 'PAGO CREDITOS', 'G', 'S', NULL),
 (13, 'ETB MOVIL', 'G', 'S', 5),
 (14, 'SPOTIFY', 'G', 'N', NULL),
-(15, 'TRANSPORTE', 'G', 'N', NULL),
+(15, 'TRANSPORTE', 'G', 'N', 15),
 (16, 'RECIBO DE LA LUZ', 'G', 'S', 16),
 (17, 'COMIDA', 'G', 'N', NULL),
 (18, 'ROPA', 'G', 'N', NULL),
 (19, 'OTROS', 'G', 'N', NULL),
 (20, 'AHORRO', 'I', 'N', NULL),
-(22, 'CINE', 'G', 'N', NULL),
-(23, 'SPOTIFY', 'G', 'S', 17),
-(24, 'TRANSPORTE', 'G', 'S', 15);
+(22, 'CINE', 'G', 'N', NULL);
 
 -- --------------------------------------------------------
 
@@ -69,17 +67,18 @@ CREATE TABLE `creditos` (
   `FECHA_VEN` int(2) DEFAULT NULL,
   `TOTAL_CUOTAS` int(3) DEFAULT '0',
   `CUOTAS_PAGAS` int(3) DEFAULT '0',
-  `INTERES` double DEFAULT NULL
+  `INTERES` double DEFAULT NULL,
+  `ULTIMO_PAGO` varchar(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `creditos`
 --
 
-INSERT INTO `creditos` (`ID`, `CREDITO`, `SALDO`, `FECHA_VEN`, `TOTAL_CUOTAS`, `CUOTAS_PAGAS`, `INTERES`) VALUES
-(3, 'ICETEX', 7984630, 10, 55, 1, 0),
-(4, 'TUYA EXITO', 940000, 17, 0, 0, 0),
-(5, 'Tarjeta Crédito Bancolombia', 1269782, 17, 0, 0, 0);
+INSERT INTO `creditos` (`ID`, `CREDITO`, `SALDO`, `FECHA_VEN`, `TOTAL_CUOTAS`, `CUOTAS_PAGAS`, `INTERES`, `ULTIMO_PAGO`) VALUES
+(3, 'ICETEX', 7984630, 10, 55, 1, 0, '2017-07-15'),
+(4, 'TUYA EXITO', 940000, 17, 0, 0, 0, NULL),
+(5, 'TARJETA BANCOLOMBIA', 1269786, 17, 1, 0, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -105,10 +104,11 @@ CREATE TABLE `transaccion` (
 INSERT INTO `transaccion` (`ID_TRANSACCION`, `ID_CONCEPTO`, `ID_CREDITO`, `DESCRIPCION`, `VALOR`, `FECHA`, `ID_USUARIO`, `FECHALOG`) VALUES
 (10, 8, NULL, 'PAGO QUEEN - Julio 2017', 1233000, '2017-07-13', 1, '2017-07-15 16:04:02'),
 (11, 20, NULL, 'Ahorro sueldo Julio', 50000, '2017-07-14', 1, '2017-07-14 18:10:06'),
-(13, 12, 3, 'ICETEX', 180000, '2017-07-13', 1, '2017-07-14 18:37:01'),
 (14, 22, NULL, 'Los minions en royal films', 30000, '2017-07-14', 1, '2017-07-15 15:02:06'),
 (15, 9, NULL, 'Saldo de apuestas anteriores ', 39000, '2017-07-15', 1, '2017-07-15 15:04:50'),
-(16, 13, NULL, 'Junio- Julio', 40000, '2017-07-04', 1, '2017-07-15 16:41:45');
+(16, 13, NULL, 'Junio- Julio', 40000, '2017-07-04', 1, '2017-07-15 16:41:45'),
+(17, 19, NULL, 'Mama y Hugo', 10000, '2017-07-15', 1, '2017-07-15 18:51:58'),
+(20, 12, 3, 'ICETEX', 180000, '2017-07-13', 1, '2017-07-15 21:28:49');
 
 -- --------------------------------------------------------
 
@@ -184,7 +184,7 @@ ALTER TABLE `creditos`
 -- AUTO_INCREMENT de la tabla `transaccion`
 --
 ALTER TABLE `transaccion`
-  MODIFY `ID_TRANSACCION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `ID_TRANSACCION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
