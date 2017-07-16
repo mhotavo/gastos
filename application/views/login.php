@@ -9,6 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<title>
 		Gastos
 	</title>
+	<link rel="icon" href="<?=base_url()?>public/images/icono.png"/>
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
 	<link rel="stylesheet" href="<?=base_url()?>public/bootstrap/css/bootstrap.min.css"/>
 	<link rel="stylesheet" href="<?=base_url()?>public/css/fontawesome/css/font-awesome.min.css"/>
