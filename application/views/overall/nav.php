@@ -45,7 +45,7 @@
       </li>
     </ul>
     <ul class="nav navbar-nav">
-      <li><a href="<?= base_url(); ?>home"> Informe <i class="fa fa-line-chart" aria-hidden="true"></i></i></a></li> 
+      <li><a href="<?= base_url(); ?>home"> Informe <i class="fa fa-pie-chart" aria-hidden="true"></i></a></li> 
     </ul>
     <ul class="nav navbar-nav">
     <li><a href="<?= base_url(); ?>home/deudas"> Endeudamiento <i class="fa fa-line-chart" aria-hidden="true"></i></i></a></li> 

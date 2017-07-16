@@ -2,7 +2,7 @@
 <body>
 	<?php $this->load->view('overall/nav'); ?>
 	<div class="container">
-		<h4 align="center"> <?php echo $concepto[0]->CONCEPTO;  ?> </h4>
+		<h2 align="center"> <?php echo $concepto[0]->CONCEPTO;  ?> </h2>
 		<br>
 		<div class="">
 			<div class="col-md-2"></div>

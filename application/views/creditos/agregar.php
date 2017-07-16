@@ -2,7 +2,7 @@
 <body>
   <?php $this->load->view('overall/nav'); ?>
   <div class="container">
-    <h4 align="center"> Nuevo Crédito </h4>
+    <h2 align="center"> Nuevo Crédito <i class="fa fa-cc-mastercard" aria-hidden="true"></i></h2>
     <br>
     <div class="">
       <div class="col-md-2"></div>

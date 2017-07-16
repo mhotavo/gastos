@@ -16,6 +16,7 @@
               <th colspan="5" class="text-center info">TRANSACCIONES</th>
             </tr>
             <tr>
+              <th width="" class="hidden">Tipo</th>
               <th width="" class="hidden-xs">Concepto</th>
               <th width="25%">Descripción</i></th>
               <th width="" class="hidden-xs">Fecha</i></th>
@@ -33,6 +34,7 @@
               } else {
                echo '<tr class="text-success bold">';
              }
+             echo '<td class="hidden">'. mb_strtoupper($row->TIPO).'</td>';
              echo '<td class="hidden-xs">'. mb_strtoupper($row->CONCEPTO).'</td>';
              echo '<td>'. mb_strtoupper($row->DESCRIPCION).'</td>';
              echo '<td class="hidden-xs">'. mb_strtoupper($row->FECHA).'</td>';
@@ -66,7 +68,7 @@
       "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
       "autoWidth": true,           
       "sPaginationType": "full_numbers",
-      "order": [[ 2, 'desc' ]]
+      "order": [[ 0, 'asc' ],[ 2, 'desc' ]]
     });
   } );
 </script>

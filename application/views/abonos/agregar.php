@@ -2,7 +2,7 @@
 <body>
   <?php $this->load->view('overall/nav'); ?>
   <div class="container">
-    <h2 align="center">Registrar Pago <i class="fa fa-money" aria-hidden="true"></i></h2> 
+    <h2 align="center">Pago <i class="fa fa-cc-mastercard" aria-hidden="true"></i></i></h2> 
     <br>
     <div class="row">
      <div class="col-md-2"></div>

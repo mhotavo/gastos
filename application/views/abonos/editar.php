@@ -2,7 +2,7 @@
 <body>
 	<?php $this->load->view('overall/nav'); ?>
 	<div class="container">
-		<h2 align="center"> <?=  $transaccion[0]->CONCEPTO ?></h2> 
+		<h2 align="center"> <?=  $transaccion[0]->CONCEPTO ?> <i class="fa fa-cc-mastercard" aria-hidden="true"></i></h2> 
 		<br>
 		<div class="row">
 			<div class="col-md-2"></div>
