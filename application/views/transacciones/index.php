@@ -68,7 +68,7 @@
       "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
       "autoWidth": true,           
       "sPaginationType": "full_numbers",
-      "order": [[ 0, 'asc' ],[ 2, 'desc' ]]
+      "order": [[ 0, 'asc' ],[ 3, 'desc' ]]
     });
   } );
 </script>
