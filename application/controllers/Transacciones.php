@@ -21,7 +21,7 @@ class Transacciones extends CI_Controller {
 			$transaccion = $this->input->post();
 			$transaccion['ID_CREDITO']=  NULL;
 			$this->Transaccion->add($transaccion);
-			header("Location:" . base_url(). "transacciones");
+			header("Location:" . base_url(). "home");
 		}
 	}
 
@@ -35,7 +35,7 @@ class Transacciones extends CI_Controller {
 				$transaccion['ID_CREDITO']=NULL;
 			} 
 			$this->Transaccion->update($transaccion);
-			header("Location:" . base_url(). "transacciones");
+			header("Location:" . base_url(). "home");
 		}  else {
 			# Vista
 			$this->load->helper('form');
@@ -86,7 +86,7 @@ class Transacciones extends CI_Controller {
 				$this->Credito->updateSaldo($abono,"update"); 
 			}
 			$this->Transaccion->delete($id);
-			header("Location:" . base_url(). "transacciones");
+			header("Location:" . base_url(). "home");
 
 		} else {
 			header("Location:" . base_url());

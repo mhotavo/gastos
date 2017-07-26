@@ -36,22 +36,31 @@
       <li class="dropdown ">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true"> Transacciónes <span class="caret"></span></a>
         <ul class="dropdown-menu" role="menu">
-          <li><a href="<?= base_url(); ?>transacciones">Todas</a></li>
+          <li><a href="<?= base_url(); ?>transacciones">Listar <i class="fa fa-bars" aria-hidden="true"></i></a></li>
           <li class="divider"></li>
-          <li><a href="<?= base_url(); ?>transacciones/ingresos">Ingresos</a></li>
+          <li><a href="<?= base_url(); ?>transacciones/ingresos">Ingresos <i class="fa fa-usd" aria-hidden="true"></i></a></li>
           <li class="divider"></li>
-          <li><a href="<?= base_url(); ?>transacciones/gastos">Gastos</a></li>
+          <li><a href="<?= base_url(); ?>transacciones/gastos">Gastos <i class="fa fa-cart-arrow-down" aria-hidden="true"></i></a></li>
         </ul>
       </li>
     </ul>
     <ul class="nav navbar-nav">
-      <li><a href="<?= base_url(); ?>home"> Informe <i class="fa fa-pie-chart" aria-hidden="true"></i></a></li> 
+      <li class="dropdown ">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true"> Informes<span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="<?= base_url(); ?>home/resumen">Resumen <i class="fa fa-bar-chart" aria-hidden="true"></i></a></li>
+          <li class="divider"></li>
+          <li><a href="<?= base_url(); ?>home">Detallado <i class="fa fa-bars" aria-hidden="true"></i></a></li>
+          <li class="divider"></li>
+          <li><a href="<?= base_url(); ?>home/deudas">Endeudamiento <i class="fa fa-line-chart" aria-hidden="true"></i></a></li>
+        </ul>
+      </li>
     </ul>
     <ul class="nav navbar-nav">
-    <li><a href="<?= base_url(); ?>home/transportes"> Transportes <i class="fa fa-bus" aria-hidden="true"></i></a></li> 
+      <li><a href="<?= base_url(); ?>home/transportes"> Transportes <i class="fa fa-bus" aria-hidden="true"></i></a></li> 
     </ul>
     <ul class="nav navbar-nav">
-      <li><a href="<?= base_url(); ?>home/deudas"> Endeudamiento <i class="fa fa-line-chart" aria-hidden="true"></i></i></a></li> 
+      <li><a href="<?= base_url(); ?>home/"> </i></a></li> 
     </ul>
     <ul class="nav navbar-nav">
      <li><a href="<?= base_url(); ?>home/backup"> Backup <i class="fa fa-database" aria-hidden="true"></i></i></a></li> 
