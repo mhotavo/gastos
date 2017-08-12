@@ -5,111 +5,87 @@
 <body>
   <?php     $this->load->view('overall/nav'); ?>
   <div  class="container"> <!-- box-principal -->
-    <h3  align="center">Mi Perfil</h3>
-    <br>
     <div class="panel panel-success">
      <div class="panel-heading">
-       <h3 class="panel-title" align="center"><?php #echo $datos['NOMBRES'] ." ". $datos['P_APELLIDO']." ". $datos['S_APELLIDO'] ; ?></h3>
+       <h3 class="panel-title" align="center"><?= ucwords($this->session->userdata('name')) ?></h3>
      </div>
      <div class="panel-body">
       <div class="row">
        <div class="col-md-4">
         <div class="panel panel-default">
          <div class="panel-body">
-          <img class="img-responsive" src="<?php #echo URL;?>HTML/Miperfil/avatars/<?php #echo  !empty($datos['IMAGEN']) ? $datos['IMAGEN'] : 'no-image.png'    ; ?>" required>
+          <img class="img-responsive" src="https://scontent.fbog2-1.fna.fbcdn.net/v/t1.0-9/14729166_10207207283848661_3989142169652778557_n.jpg?oh=bb44d1efd39f00c12159819bedac9840&oe=5A2F4B7F" required>
         </div>
       </div>
     </div>
     <div class="col-md-8">
-     <?=  form_open_multipart('perfil/update', 'class="form-horizontal"');  ?>
-     <!-- <form class="form-horizontal" enctype="multipart/form-data" method="POST"> -->
+     <?=  form_open_multipart('perfil/index/'.$usuario->ID.' ', 'class="form-horizontal"');  ?>
      <fieldset>
        <div class="form-group">
-         <label for="inputUser" class="col-md-3 control-label">Usuario</label>
+         <label for="USER" class="col-md-3 control-label">Usuario</label>
          <div class="col-md-9">
-          <input type="text" class="form-control" name="inputUser" value="<?php #echo $datos['USER']; ?>" required >
+          <input type="text" class="form-control" name="USER" value="<?= $usuario->USER ?>" required >
         </div>
-      </div> 
+      </div>  
       <div class="form-group">
-        <label for="inputDocumento" class="col-md-3 control-label">Documento</label>
-        <div class="col-md-9">
-          <input type="text" class="form-control" name="inputDocumento" value="<?php #echo $datos['DOC']; ?>" required>
-        </div>
-      </div>   
-      <div class="form-group">
-       <label for="inputNombres" class="col-md-3 control-label">Nombres</label>
+       <label for="NOMBRES" class="col-md-3 control-label">Nombres</label>
        <div class="col-md-9">
-        <input type="text" class="form-control" name="inputNombres" value="<?php #echo $datos['NOMBRES']; ?>" required>
+        <input type="text" class="form-control" name="NOMBRES" value="<?= $usuario->NOMBRES ?>" required>
       </div>
     </div>    
     <div class="form-group">
-     <label for="inputPrimerApellido" class="col-md-3 control-label">Primer Apellido</label>
+     <label for="P_APELLIDO" class="col-md-3 control-label">Primer Apellido</label>
      <div class="col-md-9">
-      <input type="text" class="form-control" name="inputPrimerApellido" value="<?php #echo $datos['P_APELLIDO']; ?>" required>
+      <input type="text" class="form-control" name="P_APELLIDO" value="<?= $usuario->P_APELLIDO ?>" required>
     </div>
   </div>    
   <div class="form-group">
-   <label for="inputSegundoApellido" class="col-md-3 control-label">Segundo Apellido</label>
+   <label for="S_APELLIDO" class="col-md-3 control-label">Segundo Apellido</label>
    <div class="col-md-9">
-    <input type="text" class="form-control" name="inputSegundoApellido" value="<?php #echo $datos['S_APELLIDO']; ?>" >
+    <input type="text" class="form-control" name="S_APELLIDO" value="<?= $usuario->S_APELLIDO ?>" >
   </div>
 </div>  
 <div class="form-group">
-  <label for="inputSegundoApellido" class="col-md-3 control-label">Contraseña Actual</label>
+  <label for="PASS_ACTUAL" class="col-md-3 control-label">Contraseña Actual</label>
   <div class="col-md-6">
-    <input type="password" class="form-control" id="actual" name="actual" onblur="validarPasswordActual();">
+    <input type="password" class="form-control" id="PASS_ACTUAL" name="PASS_ACTUAL" value="<?= $usuario->PASS ?>" onblur="validarPasswordActual();">
   </div>
   <div class="col-md-3" id="msjActual"> </div>
 </div>   
 <div class="form-group">
-  <label for="inputSegundoApellido" class="col-md-3 control-label">Nueva Contraseña</label>
+  <label for="PASS_NUEVA" class="col-md-3 control-label">Nueva Contraseña</label>
   <div class="col-md-6">
-    <input type="password" class="form-control" id="nueva"  name="nueva"  >
+    <input type="password" class="form-control" id="PASS_NUEVA"  name="PASS_NUEVA"  >
   </div>
 
 </div>  
 <div class="form-group">
-  <label for="inputSegundoApellido" class="col-md-3 control-label" >Confirmar Contraseña</label>
+  <label for="CONFIRMAR" class="col-md-3 control-label" >Confirmar Contraseña</label>
   <div class="col-md-6">
-    <input type="password" class="form-control" id="confirmar" onblur="validarPasswords();">
+    <input type="password" class="form-control" id="CONFIRMAR" onblur="validarPasswords();">
   </div>
   <div class="col-md-3" id="msjConfirmar"> </div>
-
-</div>
+</div>               
 <div class="form-group">
-  <label for="selectGenero" class="col-md-3 control-label">Género</label>
+  <label for="EMAIL" class="col-md-3 control-label">E-mail:</label>
   <div class="col-md-9">
-    <select class="form-control" name="selectGenero">
-     <option value="">[...]</option>
-     <option value="F" <?php #echo ($datos['GENERO']=='F') ? "selected" : NULL ?> >Femenino</option>
-     <option value="M"  <?php #echo ($datos['GENERO']=='M') ? "selected" : NULL ?>>Masculino</option>
-   </select>
+   <input type="email" class="form-control" name="EMAIL" value="<?= $usuario->EMAIL ?>" required>
  </div>
-</div>                 
+</div>  
 <div class="form-group">
- <label for="inputEmail" class="col-md-3 control-label">E-mail:</label>
- <div class="col-md-9">
-  <input type="email" class="form-control" name="inputEmail" value="<?php #echo $datos['EMAIL']; ?>" required>
-</div>
+  <label for="INICIO_MES" class="col-md-3 control-label">Días Inicio mes</label>
+  <div class="col-md-2">
+    <input type="number" class="form-control" name="INICIO_MES" value="<?= $usuario->INICIO_MES ?>" required>
+  </div>
+</div>  
+<div class="form-group">
+<label for="FIN_MES" class="col-md-3 control-label">Días Fin mes</label>
+  <div class="col-md-2">
+    <input type="number" class="form-control" name="FIN_MES" value="<?= $usuario->FIN_MES ?>" required>
+  </div>
 </div>   
 <div class="form-group">
- <label for="inputImagen" class="col-md-3 control-label">Imagen</label>
- <div class="col-md-9">
-  <input type="file" class="form-control" name="inputImagen" >
-</div>
-</div>
-<div class="form-group">
-  <label for="fechaIngreso" class="col-md-3 control-label">Fecha de Registro</label>
-  <div class="col-md-9">
-    <input type="date" class="form-control" disabled name="fechaIngreso" value="<?php #echo $datos['FECHA_REGISTRO']; ?>" >
-  </div>
-</div>
-
-
-<div class="form-group">
  <div class="col-md-9 col-md-offset-2">
-  <input type="hidden" class="form-control" id="id"  name="id" required value="<?php #echo $datos['ID']; ?>" >
-  <input type="hidden" class="form-control" id="nombreImagen" name="nombreImagen"   value="<?php #echo $datos['IMAGEN']; ?>" >
   <button type="submit" class="btn btn-success">Guardar</button>
 </div>
 </div>

@@ -74,7 +74,8 @@ class Transaccion extends CI_Model
 	}
 
 	public function sumaIngresos($inicio, $fin){
-		$result = $this->db->query("SELECT SUM(t.VALOR) AS TOTAL  FROM transaccion t LEFT JOIN conceptos c ON (t.ID_CONCEPTO=c.ID_CONCEPTO) WHERE c.TIPO='I'  AND FECHA BETWEEN '$inicio' AND '$fin'");
+		$sql="SELECT SUM(t.VALOR) AS TOTAL  FROM transaccion t LEFT JOIN conceptos c ON (t.ID_CONCEPTO=c.ID_CONCEPTO) WHERE c.TIPO='I'  AND FECHA BETWEEN '$inicio' AND '$fin'";
+		$result = $this->db->query($sql);
 		if ($result->num_rows() > 0) {
 			return $result->row();
 		} else {

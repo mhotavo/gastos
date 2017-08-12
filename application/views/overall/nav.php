@@ -46,11 +46,11 @@
     </ul>
     <ul class="nav navbar-nav">
       <li class="dropdown ">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true"> Informes<span class="caret"></span></a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true"> Informes<span class="caret"></span></a>
         <ul class="dropdown-menu" role="menu">
-          <li><a href="<?= base_url(); ?>home/resumen">Resumen <i class="fa fa-bar-chart" aria-hidden="true"></i></a></li>
+          <li><a href="<?= base_url(); ?>home/resumen/<?= $this->session->userdata('inicio') ?>/<?= $this->session->userdata('fin') ?> ">Resumen <i class="fa fa-bar-chart" aria-hidden="true"></i></a></li>
           <li class="divider"></li>
-          <li><a href="<?= base_url(); ?>home">Detallado <i class="fa fa-bars" aria-hidden="true"></i></a></li>
+          <li><a href="<?= base_url(); ?>home/index/<?= $this->session->userdata('inicio') ?>/<?= $this->session->userdata('fin') ?> ">Detallado <i class="fa fa-bars" aria-hidden="true"></i></a></li>
           <li class="divider"></li>
           <li><a href="<?= base_url(); ?>home/deudas">Endeudamiento <i class="fa fa-line-chart" aria-hidden="true"></i></a></li>
         </ul>
@@ -67,7 +67,10 @@
    </ul>
    <ul class="nav navbar-nav navbar-right">
      <li>
-       <a> <?php echo ucwords($this->session->userdata('name')); ?>  <i class="fa fa-user" aria-hidden="true"></i></i></a>
+       <a href="<?= base_url(); ?>Perfil">
+         <?php echo ucwords($this->session->userdata('name')); ?> 
+         <i class="fa fa-user" aria-hidden="true"></i></i>
+       </a>
      </li> 
      <li><a href="<?= base_url(); ?>login/logout">  Salir  <i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
    </ul>

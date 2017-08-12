@@ -12,8 +12,13 @@ class Home extends CI_Controller {
 	}
 
 	public function index(){
-		$inicio=$this->session->userdata('inicio');
-		$fin=$this->session->userdata('fin');
+		$inicio= $this->uri->segment(3);  
+		$fin= $this->uri->segment(4);
+		if (!isset($inicio) ) {
+			$inicio=$this->session->userdata('inicio');
+			$fin=$this->session->userdata('fin');
+		}
+
 		$totalGastos   = $this->Transaccion->sumaGastos($inicio, $fin);
 		$totalIngresos = $this->Transaccion->sumaIngresos($inicio, $fin);
 		$data['datos'] = array(
@@ -56,8 +61,14 @@ class Home extends CI_Controller {
 
 
 	public function resumen(){
-		$inicio=$this->session->userdata('inicio');
-		$fin=$this->session->userdata('fin');
+		$inicio= $this->uri->segment(3);  
+		$fin= $this->uri->segment(4);
+		if (!isset($inicio) ) {
+			$inicio=$this->session->userdata('inicio');
+			$fin=$this->session->userdata('fin');
+		}
+
+
 		$totalGastos   = $this->Transaccion->sumaGastos($inicio, $fin);
 		$totalIngresos = $this->Transaccion->sumaIngresos($inicio, $fin);
 		$data['datos'] = array(
@@ -69,9 +80,6 @@ class Home extends CI_Controller {
 		$data['creditos'] = $this->Credito->index();
 		$data['gastos']   = $this->Transaccion->mensualConsolidado($inicio,$fin, 'G');
 		$data['ingresos'] = $this->Transaccion->mensualConsolidado($inicio,$fin, 'I');
-
-
-
 
 		$this->load->view('home/resumen', $data);
 	}

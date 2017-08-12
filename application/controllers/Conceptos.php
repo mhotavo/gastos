@@ -20,7 +20,7 @@ class Conceptos extends CI_Controller {
 		if ($_POST) {
 			$Concepto = $this->input->post();
 			$this->Concepto->add($Concepto);
-			header("Location:" . base_url()."home");
+			header("Location:" . base_url()."home/resumen");
 		} else {
 				#Vista
 			$this->load->helper('form');
@@ -35,7 +35,7 @@ class Conceptos extends CI_Controller {
 			$concepto = $this->input->post();
 			$concepto['ID_CONCEPTO']=  $this->uri->segment(3);
 			$this->Concepto->update($concepto);
-			header("Location:" . base_url()."home");
+			header("Location:" . base_url()."home/resumen");
 		} else {
 				#Vista
 			$id = $this->uri->segment(3);
@@ -51,10 +51,10 @@ class Conceptos extends CI_Controller {
 		$id = $this->uri->segment(3);
 		if ($id!='') {
 			$this->Concepto->delete($id);
-			header("Location:" . base_url()."home");
+			header("Location:" . base_url()."home/resumen");
 
 		} else {
-			header("Location:" . base_url()."home");
+			header("Location:" . base_url()."home/resumen");
 		}
 	}
 
