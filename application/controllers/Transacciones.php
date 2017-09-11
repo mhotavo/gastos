@@ -15,6 +15,7 @@ class Transacciones extends CI_Controller {
 		$this->load->view('transacciones/index', $data);
 	}
 
+
 	public function agregar()
 	{
 		if ($_POST) {
@@ -40,7 +41,7 @@ class Transacciones extends CI_Controller {
 			# Vista
 			$this->load->helper('form');
 			$id                  = $this->uri->segment(3);
-			$data['transaccion'] = $this->Transaccion->ver($id);
+			$data['transaccion'] = $this->Transaccion->get($id,'','');
 			if ($data['transaccion'][0]->TIPO=='G') {
 				$data['concepto']    = $this->Concepto->gastos();
 			} else {
@@ -79,10 +80,10 @@ class Transacciones extends CI_Controller {
 	{
 		$id = $this->uri->segment(3);
 		if ($id!='') {
-			$idCredito=  $this->Transaccion->ver($id)[0]->ID_CREDITO; 
+			$idCredito=  $this->Transaccion->get($id,'','')[0]->ID_CREDITO; 
 			if ($idCredito!=null) {
 				$abono['ID_CREDITO']=$idCredito;
-				$abono['SALDO_ANTERIOR']= $this->Transaccion->ver($id)[0]->VALOR;
+				$abono['SALDO_ANTERIOR']= $this->Transaccion->get($id,'','')[0]->VALOR;
 				$this->Credito->updateSaldo($abono,"update"); 
 			}
 			$this->Transaccion->delete($id);

@@ -23,6 +23,7 @@ class Login extends CI_Controller {
 
 		if ($fila!=null) {
 			if ($fila->PASS == $inputPass ) {
+				/*
 				$dia_corte = $fila->INICIO_MES;
 				$inicio      = date("Y-m-$dia_corte");
 				if (date("d")<$dia_corte ) {
@@ -31,14 +32,17 @@ class Login extends CI_Controller {
 				}
 				$fin       = strtotime($inicio."+ 1 months - 1 day");
 				$fin       = date("Y-m-d",$fin);
-
+				*/
+				$ultimo_pago=$this->Transaccion->get('', '8', '');
+				//print_r($ultimo_pago[0]->FECHA); exit;
+				$inicio=$ultimo_pago[0]->FECHA;
 				$data = array (
 					'id'     => $fila->ID,
 					'user'   => $fila->USER,
 					'name'   => $fila->NOMBRES . ' ' . $fila->P_APELLIDO,
 					'corte'  => $fila->INICIO_MES,
 					'inicio' => $inicio,
-					'fin'    => $fin ,
+					//'fin'    => $fin ,
 					'login'  => true
 					);
 				$this->session->set_userdata($data);
